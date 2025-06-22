@@ -1,0 +1,435 @@
+/* Reseteo básico */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Layout principal */
+.page-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Estilos del sidebar */
+.sidebar {
+  margin-left: 100px; /* Ajustado para el nuevo ancho */
+  width: 369.9px; /* Aumentado de 280px a 320px */
+  background-color: rgba(106, 90, 205, 0.75);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 25px 20px 25px; /* Aumentado el padding lateral */
+  position: fixed;
+  height: 100vh;
+  z-index: 1000;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 3px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-top: 20px;
+  gap: 15px;
+  position: relative;
+}
+
+.profile-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+}
+
+.profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Separador vertical más visible */
+.profile-section::after {
+  content: "";
+  position: absolute;
+  left: 85px; /* Ajustado para la imagen más grande */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 50px;
+  background-color: #b3aeba;
+  border-radius: 1px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.profile-info {
+  text-align: left;
+  flex: 1;
+  margin-left: 10px; /* Más espacio después del separador */
+}
+
+.profile-info h2 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #b3aeba;
+  line-height: 1.1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  font-family: "montserrat", sans-serif;
+}
+
+.profile-info p {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  font-style: italic;
+  margin-bottom: 0;
+  color: #e8e8e8;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.3px;
+}
+
+.navigation {
+  flex-grow: 1;
+  margin-bottom: 30px;
+}
+
+.navigation ul {
+  list-style: none;
+  padding: 0;
+}
+
+.navigation ul li {
+  margin-bottom: 8px;
+}
+
+.navigation ul li a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  display: block;
+  padding: 15px 20px;
+  transition: all 0.3s ease;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+
+.navigation ul li a:hover,
+.navigation ul li a.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.social-media {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: auto;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.social-media a {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+  padding: 8px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-media a:hover {
+  transform: translateY(-3px);
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+}
+
+/* Contenido principal */
+.main-content {
+  flex: 1;
+  margin-left: 320px; /* Ajustado para coincidir con el nuevo ancho */
+  width: calc(100% - 320px); /* Ajustado para coincidir con el nuevo ancho */
+}
+
+/* Estilos del carrusel */
+#heroCarousel {
+  height: 100vh;
+  width: 100%;
+}
+
+.carousel-inner {
+  height: 100%;
+}
+
+.carousel-item {
+  height: 100%;
+  background-color: #000; /* Fondo negro para evitar espacios en blanco */
+  position: relative; /* Añadir posición relativa para la superposición */
+}
+
+.carousel-item img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover; /* Mantiene la proporción de la imagen y cubre todo el espacio */
+  object-position: center;
+}
+
+/* Superposición oscura para las imágenes - más intensa */
+.carousel-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6); /* Overlay más oscuro para mejor contraste */
+  z-index: 1;
+  pointer-events: none; /* Permite interactuar con los controles del carrusel */
+}
+
+/* Estilos principales del carrusel - centrado */
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+  width: 90%;
+  max-width: 800px;
+}
+
+.carousel-caption h2 {
+  font-size: 4.5rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+.carousel-caption p {
+  font-size: 1.6rem;
+  max-width: 100%;
+  margin: 0;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+  line-height: 1.5;
+  font-weight: 400;
+  opacity: 0.95;
+  color: #f0f0f0;
+}
+
+/* Controles del carrusel personalizados */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.carousel-control-prev {
+  left: 30px;
+}
+
+.carousel-control-next {
+  right: 30px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 24px;
+  height: 24px;
+  background-size: 100%;
+}
+
+/* Indicadores del carrusel */
+.carousel-indicators {
+  bottom: 30px;
+  z-index: 3;
+}
+
+.carousel-indicators [data-bs-target] {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  margin: 0 8px;
+  transition: all 0.3s ease;
+}
+
+.carousel-indicators .active {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  transform: scale(1.2);
+}
+
+/* Responsive ajustado */
+@media (max-width: 768px) {
+  .carousel-caption {
+    padding: 40px 50px;
+    width: 90%;
+    border-radius: 15px;
+  }
+
+  .carousel-caption h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    letter-spacing: 3px;
+  }
+
+  .carousel-caption p {
+    font-size: 1.3rem;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 50px;
+    height: 50px;
+  }
+
+  .carousel-control-prev {
+    left: 20px;
+  }
+
+  .carousel-control-next {
+    right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-caption {
+    padding: 30px 35px;
+    border-radius: 12px;
+  }
+
+  .carousel-caption h2 {
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+    letter-spacing: 2px;
+  }
+
+  .carousel-caption p {
+    font-size: 1.1rem;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 40px;
+    height: 40px;
+  }
+
+  .carousel-control-prev {
+    left: 15px;
+  }
+
+  .carousel-control-next {
+    right: 15px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .sidebar-overlay,
+  .sidebar {
+    width: 260px; /* Aumentado de 220px a 260px */
+    min-width: 0;
+  }
+
+  .sidebar {
+    padding: 18px 15px 10px 15px; /* Aumentado el padding lateral */
+  }
+
+  .carousel-caption.top-caption {
+    left: 270px; /* Ajustado para el nuevo ancho */
+    max-width: 320px;
+    padding: 14px 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar-overlay,
+  .sidebar {
+    width: 100vw;
+    height: auto;
+    min-height: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    align-items: flex-start;
+    height: auto;
+    padding: 10px 6px;
+    box-shadow: none;
+    background: rgba(106, 90, 205, 0.95);
+  }
+
+  .profile-section {
+    flex-direction: row;
+    gap: 8px;
+    margin-bottom: 0;
+  }
+
+  .carousel-caption.top-caption {
+    left: 0;
+    top: 120px;
+    max-width: 95vw;
+    padding: 10px 8px;
+  }
+}

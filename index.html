@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modeladora 3D</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS personalizado -->
+    <link href="css/index.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Sidebar por encima -->
+    <div class="sidebar-overlay">
+        <div class="sidebar">
+            <div class="profile-section">
+                <div class="profile-img">
+                    <img src="img/profile/profile.png" alt="Foto de perfil" class="img-fluid">
+                </div>
+                <div class="profile-info">
+                    <h2>SAMANTHA BELLO BACELIS</h2>
+                    <p>3D ARTIST</p>
+                </div>
+            </div>
+
+            <nav class="navigation">
+                <ul>
+                    <li><a href="#home" class="active">HOME</a></li>
+                    <li><a href="#portfolio">PORTFOLIO</a></li>
+                    <li><a href="#experience">EXPERIENCE</a></li>
+                    <li><a href="#about">ABOUT ME</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>
+
+            <div class="social-media">
+                <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-artstation"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+
+            <!-- Botón para toggle en móviles -->
+            <button class="sidebar-toggle" id="sidebar-toggle">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Carrusel de fondo -->
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <!-- Indicadores del carrusel -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <!-- Slides del carrusel -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/carousel/hollow.png" class="d-block w-100" alt="Hollow Knight">
+                <div class="carousel-caption top-caption">
+                    <h2>Hollow Knight</h2>
+                    <p>Modelado 3D inspirado en el juego</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img/carousel/Layer_31.png" class="d-block w-100" alt="Layer 31">
+                <div class="carousel-caption">
+                    <h2>Diseño 3D</h2>
+                    <p>Modelados artísticos profesionales con atención al detalle</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img/carousel/SeedsSeeds2.png" class="d-block w-100" alt="Seeds">
+                <div class="carousel-caption">
+                    <h2>Seeds</h2>
+                    <p>Creaciones de ambientes fantásticos e inmersivos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controles del carrusel -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+
+    <!-- Scripts de Bootstrap y personalizados -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
