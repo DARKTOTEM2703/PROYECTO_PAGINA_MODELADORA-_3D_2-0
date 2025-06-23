@@ -23,11 +23,11 @@ body {
 .sidebar {
   margin-left: 100px; /* Ajustado para el nuevo ancho */
   width: 369.9px; /* Aumentado de 280px a 320px */
-  background-color: rgba(106, 90, 205, 0.75);
+  background-color: rgba(93, 87, 163, 0.8);
   color: #fff;
   display: flex;
   flex-direction: column;
-  padding: 40px 25px 20px 25px; /* Aumentado el padding lateral */
+  padding: 60px 25px 20px 25px; /* Aumentado el padding lateral */
   position: fixed;
   height: 100vh;
   z-index: 1000;
@@ -66,10 +66,10 @@ body {
   content: "";
   position: absolute;
   left: 85px; /* Ajustado para la imagen más grande */
-  top: 50%;
+  top: 60%;
   transform: translateY(-50%);
   width: 2px;
-  height: 50px;
+  height: 60px;
   background-color: #b3aeba;
   border-radius: 1px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
@@ -90,21 +90,24 @@ body {
   color: #b3aeba;
   line-height: 1.1;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  font-family: "montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .profile-info p {
   font-size: 0.85rem;
   opacity: 0.9;
-  font-style: italic;
+  font-style: Montserrat;
   margin-bottom: 0;
   color: #e8e8e8;
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0.3px;
+  transform: skew(-15deg);
+  display: inline-block;
 }
 
 .navigation {
+  margin-top: 60px;
   flex-grow: 1;
   margin-bottom: 30px;
 }
@@ -115,7 +118,7 @@ body {
 }
 
 .navigation ul li {
-  margin-bottom: 8px;
+  margin-bottom: 20px;
 }
 
 .navigation ul li a {
@@ -124,19 +127,19 @@ body {
   display: block;
   padding: 15px 20px;
   transition: all 0.3s ease;
-  font-weight: 400;
-  letter-spacing: 0.5px;
-  font-size: 0.95rem;
+  font-weight: 300; /* Cambiado de 400 a 300 para texto más ligero */
+  letter-spacing: 1px; /* Aumentado de 0.5px a 1px */
+  font-size: 1rem; /* Aumentado de 0.95rem a 1rem */
   border-radius: 8px;
   text-transform: uppercase;
+  font-family: "Montserrat", "Helvetica", sans-serif; /* Fuente más limpia */
 }
 
 .navigation ul li a:hover,
 .navigation ul li a.active {
+  transform: scale(1.05);
   background-color: rgba(255, 255, 255, 0.15);
   color: #ffffff;
-  transform: translateX(5px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .social-media {
@@ -160,6 +163,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none; /* Elimina la línea de subrayado */
 }
 
 .social-media a:hover {
@@ -167,6 +171,13 @@ body {
   color: #ffffff;
   background-color: rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  text-decoration: none; /* Asegura que no aparezca línea en hover */
+}
+
+.social-media a:focus,
+.social-media a:active,
+.social-media a:visited {
+  text-decoration: none; /* Elimina líneas en todos los estados */
 }
 
 .sidebar-toggle {
@@ -224,11 +235,33 @@ body {
   pointer-events: none; /* Permite interactuar con los controles del carrusel */
 }
 
+/* Controles del carrusel personalizados */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.carousel-control-prev {
+  left: 490px; /* Posicionado a la derecha del sidebar (369.9px + 100px margin + 20px espacio) */
+}
+
+.carousel-control-next {
+  right: 30px; /* Mantiene su posición original */
+}
+
 /* Estilos principales del carrusel - centrado */
 .carousel-caption {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 55%; /* Movido ligeramente hacia la derecha desde 50% */
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 2;
@@ -258,42 +291,6 @@ body {
   color: #f0f0f0;
 }
 
-/* Controles del carrusel personalizados */
-.carousel-control-prev,
-.carousel-control-next {
-  width: 60px;
-  height: 60px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 3;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  transition: all 0.3s ease;
-}
-
-.carousel-control-prev {
-  left: 30px;
-}
-
-.carousel-control-next {
-  right: 30px;
-}
-
-.carousel-control-prev:hover,
-.carousel-control-next:hover {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  width: 24px;
-  height: 24px;
-  background-size: 100%;
-}
-
 /* Indicadores del carrusel */
 .carousel-indicators {
   bottom: 30px;
@@ -318,10 +315,39 @@ body {
 
 /* Responsive ajustado */
 @media (max-width: 768px) {
+  .sidebar-toggle {
+    display: block;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    margin-left: 0;
+    width: 300px;
+  }
+
+  .sidebar.mobile-visible {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .carousel-control-prev {
+    left: 30px; /* Posicionado correctamente sin sidebar visible */
+  }
+
+  .carousel-control-next {
+    right: 30px;
+  }
+
   .carousel-caption {
-    padding: 40px 50px;
+    left: 50%; /* Centrado cuando no hay sidebar visible */
     width: 90%;
-    border-radius: 15px;
+    padding: 30px 20px;
   }
 
   .carousel-caption h2 {
@@ -333,36 +359,30 @@ body {
   .carousel-caption p {
     font-size: 1.3rem;
   }
-
-  .carousel-control-prev,
-  .carousel-control-next {
-    width: 50px;
-    height: 50px;
-  }
-
-  .carousel-control-prev {
-    left: 20px;
-  }
-
-  .carousel-control-next {
-    right: 20px;
-  }
 }
 
 @media (max-width: 480px) {
-  .carousel-caption {
-    padding: 30px 35px;
-    border-radius: 12px;
+  .sidebar-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+    left: 10px;
+    top: 10px;
   }
 
-  .carousel-caption h2 {
-    font-size: 2.2rem;
-    margin-bottom: 0.8rem;
-    letter-spacing: 2px;
+  .sidebar {
+    width: 280px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
   }
 
-  .carousel-caption p {
-    font-size: 1.1rem;
+  .sidebar.mobile-visible {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
   }
 
   .carousel-control-prev,
@@ -378,58 +398,87 @@ body {
   .carousel-control-next {
     right: 15px;
   }
+
+  .carousel-caption {
+    left: 50%;
+    width: 95%;
+    padding: 20px 15px;
+  }
+
+  .carousel-caption h2 {
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+    letter-spacing: 2px;
+  }
+
+  .carousel-caption p {
+    font-size: 1.1rem;
+  }
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .sidebar-overlay,
+/* Responsive para tablets - mantener comportamiento original */
+@media (max-width: 900px) and (min-width: 769px) {
   .sidebar {
-    width: 260px; /* Aumentado de 220px a 260px */
-    min-width: 0;
+    width: 260px;
+    margin-left: 50px;
   }
 
-  .sidebar {
-    padding: 18px 15px 10px 15px; /* Aumentado el padding lateral */
+  .main-content {
+    margin-left: 310px;
+    width: calc(100% - 310px);
   }
 
-  .carousel-caption.top-caption {
-    left: 270px; /* Ajustado para el nuevo ancho */
-    max-width: 320px;
-    padding: 14px 16px;
+  .carousel-control-prev {
+    left: 330px;
   }
 }
 
 @media (max-width: 600px) {
-  .sidebar-overlay,
-  .sidebar {
-    width: 100vw;
-    height: auto;
-    min-height: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 20;
+  .sidebar-toggle {
+    display: block;
   }
 
   .sidebar {
-    flex-direction: row;
-    align-items: flex-start;
-    height: auto;
-    padding: 10px 6px;
-    box-shadow: none;
-    background: rgba(106, 90, 205, 0.95);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    flex-direction: column;
+    padding: 60px 20px 20px 20px;
+    margin-left: 0;
+  }
+
+  .sidebar.mobile-visible {
+    transform: translateX(0);
   }
 
   .profile-section {
     flex-direction: row;
-    gap: 8px;
-    margin-bottom: 0;
+    gap: 15px;
+    margin-bottom: 30px;
   }
 
-  .carousel-caption.top-caption {
-    left: 0;
-    top: 120px;
-    max-width: 95vw;
-    padding: 10px 8px;
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .carousel-control-prev {
+    left: 15px;
+  }
+
+  .carousel-control-next {
+    right: 15px;
+  }
+
+  .carousel-caption {
+    left: 50%;
+    top: 50%;
+    width: 95%;
+    padding: 20px 15px;
   }
 }
