@@ -1,4 +1,8 @@
+@import url("page-transitions.css");
+@import url("page-animations.css");
+
 /* Reseteo básico */
+
 *,
 *::before,
 *::after {

@@ -1,0 +1,272 @@
+/* Animaciones de entrada para páginas */
+
+/* Reseteo para animaciones */
+body {
+  opacity: 0;
+  animation: pageEnter 0.8s ease-out forwards;
+}
+
+@keyframes pageEnter {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animaciones para el Sidebar - SOLO EN DESKTOP */
+@media (min-width: 769px) {
+  .sidebar {
+    transform: translateX(-50px);
+    opacity: 0;
+    animation: slideInLeft 0.6s ease-out 0.2s forwards;
+  }
+
+  @keyframes slideInLeft {
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .profile-section {
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out 0.4s forwards;
+  }
+
+  .navigation ul li {
+    transform: translateX(-30px);
+    opacity: 0;
+    animation: slideInFade 0.5s ease-out forwards;
+  }
+
+  .navigation ul li:nth-child(1) { animation-delay: 0.6s; }
+  .navigation ul li:nth-child(2) { animation-delay: 0.7s; }
+  .navigation ul li:nth-child(3) { animation-delay: 0.8s; }
+  .navigation ul li:nth-child(4) { animation-delay: 0.9s; }
+  .navigation ul li:nth-child(5) { animation-delay: 1.0s; }
+
+  .social-media {
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out 1.2s forwards;
+  }
+}
+
+/* EN MÓVIL - Sin animaciones del sidebar */
+@media (max-width: 768px) {
+  .sidebar {
+    opacity: 1;
+    transform: translateX(-100%);
+    /* El sidebar permanece oculto hasta que se active manualmente */
+  }
+  
+  .sidebar.mobile-visible {
+    animation: slideInMobile 0.3s ease-out forwards;
+  }
+  
+  @keyframes slideInMobile {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  /* Los elementos internos del sidebar están listos pero no animados */
+  .profile-section,
+  .navigation ul li,
+  .social-media {
+    transform: none;
+    opacity: 1;
+    animation: none;
+  }
+}
+
+@keyframes slideInFade {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Animaciones específicas para HOME */
+.home-page .hero-section {
+  transform: scale(0.95) translateY(30px);
+  opacity: 0;
+  animation: heroEnter 0.8s ease-out 0.3s forwards;
+}
+
+@keyframes heroEnter {
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.home-page .hero-title {
+  transform: translateY(50px);
+  opacity: 0;
+  animation: titleSlideUp 0.7s ease-out 0.5s forwards;
+}
+
+.home-page .hero-subtitle {
+  transform: translateY(30px);
+  opacity: 0;
+  animation: titleSlideUp 0.7s ease-out 0.7s forwards;
+}
+
+.home-page .hero-description {
+  transform: translateY(20px);
+  opacity: 0;
+  animation: titleSlideUp 0.6s ease-out 0.9s forwards;
+}
+
+@keyframes titleSlideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Animaciones específicas para PORTFOLIO */
+.portfolio-container .portfolio-header {
+  transform: translateY(-20px);
+  opacity: 0;
+  animation: slideDown 0.6s ease-out 0.3s forwards;
+}
+
+@keyframes slideDown {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.filter-btn {
+  transform: translateY(-15px);
+  opacity: 0;
+  animation: filterEnter 0.4s ease-out forwards;
+}
+
+.filter-btn:nth-child(1) { animation-delay: 0.5s; }
+.filter-btn:nth-child(2) { animation-delay: 0.6s; }
+.filter-btn:nth-child(3) { animation-delay: 0.7s; }
+.filter-btn:nth-child(4) { animation-delay: 0.8s; }
+.filter-btn:nth-child(5) { animation-delay: 0.9s; }
+
+@keyframes filterEnter {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.portfolio-item {
+  transform: translateY(30px) scale(0.95);
+  opacity: 0;
+  animation: portfolioItemEnter 0.6s ease-out forwards;
+}
+
+.portfolio-item:nth-child(1) { animation-delay: 0.8s; }
+.portfolio-item:nth-child(2) { animation-delay: 0.9s; }
+.portfolio-item:nth-child(3) { animation-delay: 1.0s; }
+.portfolio-item:nth-child(4) { animation-delay: 1.1s; }
+.portfolio-item:nth-child(5) { animation-delay: 1.2s; }
+.portfolio-item:nth-child(6) { animation-delay: 1.3s; }
+.portfolio-item:nth-child(7) { animation-delay: 1.4s; }
+.portfolio-item:nth-child(8) { animation-delay: 1.5s; }
+.portfolio-item:nth-child(9) { animation-delay: 1.6s; }
+
+@keyframes portfolioItemEnter {
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Animaciones para el main-content en móvil */
+@media (max-width: 768px) {
+  .main-content {
+    transform: translateY(20px);
+    opacity: 0;
+    animation: mainContentEnter 0.6s ease-out 0.2s forwards;
+  }
+  
+  @keyframes mainContentEnter {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Reducir delays en móvil para que todo aparezca más rápido */
+  .portfolio-item:nth-child(1) { animation-delay: 0.4s; }
+  .portfolio-item:nth-child(2) { animation-delay: 0.5s; }
+  .portfolio-item:nth-child(3) { animation-delay: 0.6s; }
+  .portfolio-item:nth-child(4) { animation-delay: 0.7s; }
+  .portfolio-item:nth-child(5) { animation-delay: 0.8s; }
+  .portfolio-item:nth-child(6) { animation-delay: 0.9s; }
+  
+  .filter-btn:nth-child(1) { animation-delay: 0.3s; }
+  .filter-btn:nth-child(2) { animation-delay: 0.35s; }
+  .filter-btn:nth-child(3) { animation-delay: 0.4s; }
+  .filter-btn:nth-child(4) { animation-delay: 0.45s; }
+  .filter-btn:nth-child(5) { animation-delay: 0.5s; }
+}
+
+/* Animaciones para ABOUT PAGE */
+.about-page .about-header {
+  transform: translateX(-50px);
+  opacity: 0;
+  animation: slideInLeft 0.7s ease-out 0.3s forwards;
+}
+
+.about-page .about-content {
+  transform: translateY(30px);
+  opacity: 0;
+  animation: fadeInUp 0.7s ease-out 0.5s forwards;
+}
+
+.about-page .skills-section {
+  transform: translateX(50px);
+  opacity: 0;
+  animation: slideInRight 0.7s ease-out 0.7s forwards;
+}
+
+@keyframes slideInRight {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Botón toggle del sidebar con animación */
+.sidebar-toggle {
+  opacity: 0;
+  transform: scale(0.8);
+  animation: toggleEnter 0.5s ease-out 0.1s forwards;
+}
+
+@keyframes toggleEnter {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Preferencias de usuario para animaciones reducidas */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
