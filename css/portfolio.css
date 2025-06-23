@@ -9,6 +9,7 @@
 
 html,
 body {
+  background-color: #1e1e2c; /* Cambiado de #000000 a #1e1e2c */
   height: 100%;
   overflow-x: hidden;
 }
@@ -195,122 +196,10 @@ body {
 /* Contenido principal */
 .main-content {
   flex: 1;
-  margin-left: 320px; /* Ajustado para coincidir con el nuevo ancho */
-  width: calc(100% - 320px); /* Ajustado para coincidir con el nuevo ancho */
-}
-
-/* Estilos del carrusel */
-#heroCarousel {
-  height: 100vh;
-  width: 100%;
-}
-
-.carousel-inner {
-  height: 100%;
-}
-
-.carousel-item {
-  height: 100%;
-  background-color: #000; /* Fondo negro para evitar espacios en blanco */
-  position: relative; /* Añadir posición relativa para la superposición */
-}
-
-.carousel-item img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover; /* Mantiene la proporción de la imagen y cubre todo el espacio */
-  object-position: center;
-}
-
-/* Superposición oscura para las imágenes - más intensa */
-.carousel-item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6); /* Overlay más oscuro para mejor contraste */
-  z-index: 1;
-  pointer-events: none; /* Permite interactuar con los controles del carrusel */
-}
-
-/* Controles del carrusel personalizados */
-.carousel-control-prev,
-.carousel-control-next {
-  width: 60px;
-  height: 60px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 3;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  transition: all 0.3s ease;
-}
-
-.carousel-control-prev {
-  left: 490px; /* Posicionado a la derecha del sidebar (369.9px + 100px margin + 20px espacio) */
-}
-
-.carousel-control-next {
-  right: 30px; /* Mantiene su posición original */
-}
-
-/* Estilos principales del carrusel - centrado */
-.carousel-caption {
-  position: absolute;
-  top: 50%;
-  left: 55%; /* Movido ligeramente hacia la derecha desde 50% */
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 2;
-  width: 90%;
-  max-width: 800px;
-}
-
-.carousel-caption h2 {
-  font-size: 4.5rem;
-  font-weight: 900;
-  margin-bottom: 1.5rem;
-  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  line-height: 1.1;
-  color: #ffffff;
-}
-
-.carousel-caption p {
-  font-size: 1.6rem;
-  max-width: 100%;
-  margin: 0;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
-  line-height: 1.5;
-  font-weight: 400;
-  opacity: 0.95;
-  color: #f0f0f0;
-}
-
-/* Indicadores del carrusel */
-.carousel-indicators {
-  bottom: 30px;
-  z-index: 3;
-}
-
-.carousel-indicators [data-bs-target] {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.5);
-  border: 2px solid rgba(255, 255, 255, 0.7);
-  margin: 0 8px;
-  transition: all 0.3s ease;
-}
-
-.carousel-indicators .active {
-  background-color: #ffffff;
-  border-color: #ffffff;
-  transform: scale(1.2);
+  margin-left: 469.9px; /* Cambiado de 320px a 469.9px (369.9px + 100px margin) */
+  width: calc(
+    100% - 469.9px
+  ); /* Ajustado para coincidir con el nuevo ancho total */
 }
 
 /* Responsive ajustado */
@@ -334,30 +223,6 @@ body {
   .main-content {
     margin-left: 0;
     width: 100%;
-  }
-
-  .carousel-control-prev {
-    left: 30px; /* Posicionado correctamente sin sidebar visible */
-  }
-
-  .carousel-control-next {
-    right: 30px;
-  }
-
-  .carousel-caption {
-    left: 50%; /* Centrado cuando no hay sidebar visible */
-    width: 90%;
-    padding: 30px 20px;
-  }
-
-  .carousel-caption h2 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    letter-spacing: 3px;
-  }
-
-  .carousel-caption p {
-    font-size: 1.3rem;
   }
 }
 
@@ -384,36 +249,6 @@ body {
     margin-left: 0;
     width: 100%;
   }
-
-  .carousel-control-prev,
-  .carousel-control-next {
-    width: 40px;
-    height: 40px;
-  }
-
-  .carousel-control-prev {
-    left: 15px;
-  }
-
-  .carousel-control-next {
-    right: 15px;
-  }
-
-  .carousel-caption {
-    left: 50%;
-    width: 95%;
-    padding: 20px 15px;
-  }
-
-  .carousel-caption h2 {
-    font-size: 2.2rem;
-    margin-bottom: 0.8rem;
-    letter-spacing: 2px;
-  }
-
-  .carousel-caption p {
-    font-size: 1.1rem;
-  }
 }
 
 /* Responsive para tablets - mantener comportamiento original */
@@ -426,10 +261,6 @@ body {
   .main-content {
     margin-left: 310px;
     width: calc(100% - 310px);
-  }
-
-  .carousel-control-prev {
-    left: 330px;
   }
 }
 
@@ -465,20 +296,5 @@ body {
   .main-content {
     margin-left: 0;
     width: 100%;
-  }
-
-  .carousel-control-prev {
-    left: 15px;
-  }
-
-  .carousel-control-next {
-    right: 15px;
-  }
-
-  .carousel-caption {
-    left: 50%;
-    top: 50%;
-    width: 95%;
-    padding: 20px 15px;
   }
 }
