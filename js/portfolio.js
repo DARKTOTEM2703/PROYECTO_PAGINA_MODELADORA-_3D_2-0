@@ -190,20 +190,51 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }); // Abrir modal del proyecto
   function openProjectModal(project) {
-    const modal = document.getElementById("portfolioModal");
-    const modalTitle = modal.querySelector(".modal-title");
-    const modalImg = modal.querySelector(".modal-image");
-    const modalDescription = modal.querySelector(".modal-description p");
+  const modal = document.getElementById("portfolioModal");
+  const modalTitle = modal.querySelector(".modal-title");
+  const modalImg = modal.querySelector(".modal-image");
+  const modalDescription = modal.querySelector(".modal-description");
 
-    modalTitle.textContent = project.title;
-    modalImg.src = project.thumbnail;
-    modalImg.alt = project.title;
-    modalDescription.textContent = project.description;
+  modalTitle.textContent = project.title;
+  modalImg.src = project.thumbnail;
+  modalImg.alt = project.title;
 
-    // Mostrar modal
-    const bootstrapModal = new bootstrap.Modal(modal);
-    bootstrapModal.show();
-  }
+  // Crear contenido completo del modal
+  modalDescription.innerHTML = `
+    <div class="description-section">
+      <h4>DESCRIPTION</h4>
+      <p>${project.detailedDescription || project.description}</p>
+    </div>
+    
+    ${project.softwares ? `
+      <div class="softwares-section">
+        <h4>SOFTWARES</h4>
+        <div class="software-icons">
+          ${project.softwares.map(software => `
+            <div class="software-icon">
+              <img src="${software}" alt="Software icon" />
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    ` : ''}
+    
+    ${project.renders ? `
+      <div class="renders-section">
+        <h4>RENDERS</h4>
+        <div class="renders-grid">
+          ${project.renders.map(render => `
+            <img src="${render}" alt="Render" class="render-image" />
+          `).join('')}
+        </div>
+      </div>
+    ` : ''}
+  `;
+
+  // Mostrar modal
+  const bootstrapModal = new bootstrap.Modal(modal);
+  bootstrapModal.show();
+}
 
   // Inicializar
   loadPortfolioData();

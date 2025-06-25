@@ -6,23 +6,42 @@
       "category": ["characters", "videogames"],
       "folder": "Personajes/HOLLOW",
       "thumbnail": "img/personajes/HOLLOW/hollow.png",
-      "description": "Modelado 3D del personaje principal de Hollow Knight"
+      "description": "Modelado 3D del personaje principal de Hollow Knight",
+      "detailedDescription": "Hollow Knight fan art represented in a 3D diorama, capturing the essence and characteristic details of the original game. The model was created from scratch in Blender, where the base mesh was developed and optimized through a retopology process. The most detailed parts of the character were sculpted in ZBrush to add greater definition and fidelity to the design.\n\nTexturing was carried out in Substance Painter, applying a PBR workflow to achieve realistic and well-defined materials. This project was developed during my studies at ENTI (Escola de Noves Tecnologies Interactives), as part of the higher degree in Character Design and Development. The objective of the assignment was to create a 3D model of a creature, applying modeling, sculpting, and texturing techniques for real-time engines.",
+      "softwares": [
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg",
+        "img/icons/zbrush.png",
+        "img/icons/substance-painter.png",
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg"
+      ]
     },
     {
       "id": "pochita",
-      "title": "POCHITA",
+      "title": "POCHITA", 
       "category": ["characters"],
       "folder": "Personajes/POCHITA",
       "thumbnail": "img/personajes/POCHITA/POCHITA-PRINCIPAL.png",
-      "description": "Modelado 3D de Pochita de Chainsaw Man"
+      "description": "Modelado 3D de Pochita de Chainsaw Man",
+      "detailedDescription": "Modelado 3D completo del personaje Pochita de la serie Chainsaw Man. El proyecto incluye el modelado base, esculpido de detalles, texturizado y preparación para renderizado. Se prestó especial atención a las proporciones y características distintivas del personaje para mantener la fidelidad al diseño original.",
+      "softwares": [
+        "img/icons/blender.png",
+        "img/icons/zbrush.png",
+        "img/icons/photoshop.png"
+      ]
     },
     {
       "id": "tomie",
       "title": "TOMIE",
       "category": ["characters"],
       "folder": "Personajes/Tomie",
-      "thumbnail": "img/personajes/tomie/tbrender004.png",
-      "description": "Modelado 3D del personaje Tomie"
+      "thumbnail": "img/personajes/tomie/tbrender004.png", 
+      "description": "Modelado 3D del personaje Tomie",
+      "detailedDescription": "Interpretación 3D del icónico personaje Tomie de Junji Ito. El proyecto se enfocó en capturar la esencia inquietante y la belleza perturbadora del personaje, trabajando especialmente en los detalles faciales y la expresión. Se utilizaron técnicas avanzadas de sculpting para lograr las características distintivas.",
+      "softwares": [
+        "img/icons/blender.png",
+        "img/icons/zbrush.png",
+        "img/icons/photoshop.png"
+      ]
     },
     {
       "id": "chicarosa",
