@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function showSidebar() {
     sidebar.classList.remove("mobile-hidden");
     sidebar.classList.add("mobile-visible");
+    sidebarToggle.classList.add("active"); // Animar botón hamburguesa
     document.querySelector(".sidebar-overlay").classList.add("active");
     document.body.style.overflow = "hidden";
   }
@@ -27,13 +28,20 @@ document.addEventListener("DOMContentLoaded", function () {
   function hideSidebar() {
     sidebar.classList.remove("mobile-visible");
     sidebar.classList.add("mobile-hidden");
+    sidebarToggle.classList.remove("active"); // Restaurar botón hamburguesa
     document.querySelector(".sidebar-overlay").classList.remove("active");
     document.body.style.overflow = "";
   }
 
   // Event listeners para botón toggle
   if (sidebarToggle) {
-    sidebarToggle.addEventListener("click", showSidebar);
+    sidebarToggle.addEventListener("click", function() {
+      if (sidebar.classList.contains("mobile-visible")) {
+        hideSidebar();
+      } else {
+        showSidebar();
+      }
+    });
   }
 
   // Event listener para overlay
@@ -96,8 +104,10 @@ document.addEventListener("DOMContentLoaded", function () {
   function initMobileState() {
     if (window.innerWidth <= 768) {
       sidebar.classList.add("mobile-hidden");
+      sidebarToggle.classList.remove("active");
     } else {
       sidebar.classList.remove("mobile-hidden", "mobile-visible");
+      sidebarToggle.classList.remove("active");
     }
   }
 

@@ -65,81 +65,32 @@
             </div>
 
             <!-- Grid de Portfolio -->
-            <div class="portfolio-grid">
-                <!-- Primera fila -->
-                <div class="portfolio-item" data-category="characters videogames">
-                    <div class="portfolio-card">
-                        <img src="img/portfolio/hollow-knight-1.jpg" alt="Hollow Knight">
-                        <div class="image-title">HOLLOW KNIGHT</div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="characters">
-                    <div class="portfolio-card">
-                        <img src="img/portfolio/character-design.jpg" alt="Character Design">
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="gamejams videogames">
-                    <div class="portfolio-card">
-                        <img src="img/portfolio/seed-seeds.jpg" alt="Seed Seeds">
-                    </div>
-                </div>
-
-                <!-- Segunda fila -->
-                <div class="portfolio-item" data-category="characters videogames">
-                    <div class="portfolio-card">
-                        <img src="img/portfolio/hollow-knight-2.jpg" alt="Hollow Knight 2">
-                        <div class="image-title">HOLLOW KNIGHT</div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="environments">
-                    <div class="portfolio-card">
-                        <img src="img/portfolio/3d-room.jpg" alt="3D Room">
-                        <div class="image-title">3D ROOM</div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="gamejams videogames">
-                    <div class="portfolio-card">
-                        <img src="img/portfolio/seed-seeds-2.jpg" alt="Seed Seeds 2">
-                        <div class="image-title">SEED SEEDS!</div>
-                    </div>
-                </div>
-
-                <!-- Tercera fila -->
-                <div class="portfolio-item" data-category="characters videogames">
-                    <div class="portfolio-card">
-                        <img src="img/portfolio/hollow-knight-3.jpg" alt="Hollow Knight 3">
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="environments">
-                    <div class="portfolio-card">
-                        <img src="img/portfolio/architecture.jpg" alt="Architecture">
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-category="gamejams videogames">
-                    <div class="portfolio-card">
-                        <img src="img/portfolio/seed-seeds-3.jpg" alt="Seed Seeds 3">
-                    </div>
-                </div>
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- Los proyectos se cargarán dinámicamente aquí -->
             </div>
         </div>
-    </main>
-
-    <!-- Modal para vista ampliada -->
+    </main> <!-- Modal para vista ampliada -->
     <div class="modal fade" id="portfolioModal" tabindex="-1">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img src="" alt="" class="img-fluid w-100">
-                    <div class="modal-description mt-3">
+                    <div class="modal-image-container">
+                        <img src="" alt="" class="modal-image">
+                        <!-- Botones de expansión y descarga en las esquinas -->
+                        <div class="modal-controls">
+                            <button class="control-btn expand-btn" title="Expandir">
+                                <i class="fas fa-expand-arrows-alt"></i>
+                            </button>
+                            <button class="control-btn download-btn" title="Descargar">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-description">
                         <p></p>
                     </div>
                 </div>

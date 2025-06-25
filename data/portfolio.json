@@ -1,0 +1,100 @@
+{
+  "projects": [
+    {
+      "id": "hollow-knight",
+      "title": "HOLLOW KNIGHT",
+      "category": ["characters", "videogames"],
+      "folder": "Personajes/HOLLOW",
+      "thumbnail": "img/personajes/HOLLOW/hollow.png",
+      "description": "Modelado 3D del personaje principal de Hollow Knight"
+    },
+    {
+      "id": "pochita",
+      "title": "POCHITA",
+      "category": ["characters"],
+      "folder": "Personajes/POCHITA",
+      "thumbnail": "img/personajes/POCHITA/POCHITA-PRINCIPAL.png",
+      "description": "Modelado 3D de Pochita de Chainsaw Man"
+    },
+    {
+      "id": "tomie",
+      "title": "TOMIE",
+      "category": ["characters"],
+      "folder": "Personajes/Tomie",
+      "thumbnail": "img/personajes/tomie/tbrender004.png",
+      "description": "Modelado 3D del personaje Tomie"
+    },
+    {
+      "id": "chicarosa",
+      "title": "CHICA ROSA",
+      "category": ["characters"],
+      "folder": "Personajes/CHICAROSA",
+      "thumbnail": "img/portfolio/chicarosa.jpg",
+      "description": "Modelado de personaje femenino"
+    },
+    {
+      "id": "seed-seeds",
+      "title": "SEED SEEDS",
+      "category": ["gamejams", "videogames"],
+      "folder": "Gamejams/SEED SEEDS",
+      "thumbnail": "img/portfolio/seed-seeds.jpg",
+      "description": "Proyecto de game jam con temática de plantas"
+    },
+    {
+      "id": "dont-look",
+      "title": "DON'T LOOK",
+      "category": ["gamejams", "videogames"],
+      "folder": "Gamejams/Dont Look",
+      "thumbnail": "img/portfolio/dont-look.jpg",
+      "description": "Game jam con mecánicas de horror"
+    },
+    {
+      "id": "kitsune",
+      "title": "EL VIAJE DE KITSUNE",
+      "category": ["gamejams", "videogames"],
+      "folder": "Gamejams/El viaje de kitsune",
+      "thumbnail": "img/portfolio/kitsune.jpg",
+      "description": "Aventura visual de un zorro mágico"
+    },
+    {
+      "id": "let-us-out",
+      "title": "LET US OUT",
+      "category": ["gamejams", "videogames"],
+      "folder": "Gamejams/Let us Out",
+      "thumbnail": "img/portfolio/let-us-out.jpg",
+      "description": "Juego de escape cooperativo"
+    },
+    {
+      "id": "escenario-chido",
+      "title": "ESCENARIO CHIDO",
+      "category": ["environments"],
+      "folder": "Escenarios/ESCENARIOCHIDO",
+      "thumbnail": "img/portfolio/escenario-chido.jpg",
+      "description": "Diseño de entorno 3D detallado"
+    },
+    {
+      "id": "plantas-vs-zombies",
+      "title": "CASA PLANTAS VS ZOMBIES",
+      "category": ["environments", "videogames"],
+      "folder": "Academicos/Casa Plantas vs Zombies",
+      "thumbnail": "img/portfolio/pvz-house.jpg",
+      "description": "Recreación 3D de la casa de Plants vs Zombies"
+    },
+    {
+      "id": "environment-ue",
+      "title": "ENVIRONMENT UE",
+      "category": ["environments"],
+      "folder": "Academicos/Enviroment UE",
+      "thumbnail": "img/portfolio/environment-ue.jpg",
+      "description": "Entorno creado en Unreal Engine"
+    },
+    {
+      "id": "espacio",
+      "title": "ESPACIO",
+      "category": ["environments"],
+      "folder": "Academicos/Espacio",
+      "thumbnail": "img/portfolio/espacio.jpg",
+      "description": "Escena espacial con detalles astronómicos"
+    }
+  ]
+}

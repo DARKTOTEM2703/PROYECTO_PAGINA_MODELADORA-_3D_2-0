@@ -248,18 +248,41 @@ body {
   }
 }
 
-/* Botón toggle del sidebar con animación */
+/* Animación para el botón hamburguesa */
 .sidebar-toggle {
   opacity: 0;
-  transform: scale(0.8);
-  animation: toggleEnter 0.5s ease-out 0.1s forwards;
+  transform: scale(0.8) translateY(-10px);
+  animation: hamburgerEnter 0.6s ease-out 0.3s forwards;
 }
 
-@keyframes toggleEnter {
+@keyframes hamburgerEnter {
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) translateY(0);
   }
+}
+
+/* Efecto de pulso sutil para llamar la atención */
+@media (max-width: 768px) {
+  .sidebar-toggle {
+    animation: hamburgerEnter 0.6s ease-out 0.3s forwards, 
+               subtlePulse 3s ease-in-out 2s infinite;
+  }
+}
+
+@keyframes subtlePulse {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 
+                0 0 0 4px rgba(108, 99, 255, 0.2);
+  }
+}
+
+/* Detener el pulso cuando el sidebar esté abierto */
+.sidebar-toggle.active {
+  animation: none !important;
 }
 
 /* Preferencias de usuario para animaciones reducidas */

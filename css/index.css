@@ -182,16 +182,61 @@ body {
   text-decoration: none; /* Elimina líneas en todos los estados */
 }
 
+/* Botón hamburguesa */
 .sidebar-toggle {
   display: none;
-  background: transparent;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1001;
+  background: rgba(42, 42, 62, 0.9);
   border: none;
-  color: white;
-  font-size: 1.5rem;
-  position: absolute;
-  right: 15px;
-  top: 15px;
+  border-radius: 8px;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+}
+
+.sidebar-toggle:hover {
+  background: rgba(54, 54, 78, 0.95);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.sidebar-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Líneas del hamburguesa */
+.hamburger-line {
+  width: 22px;
+  height: 2px;
+  background-color: #ffffff;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Animación cuando el sidebar está abierto */
+.sidebar-toggle.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.sidebar-toggle.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.sidebar-toggle.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
 }
 
 /* Contenido principal */
