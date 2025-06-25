@@ -844,3 +844,78 @@ body {
     width: 100%;
   }
 }
+
+/* Estilos para la sección de renders */
+.renders-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.renders-section h4 {
+  color: #6c63ff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.8rem;
+  margin-bottom: 25px;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(108, 99, 255, 0.3);
+}
+
+.renders-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+  padding: 0 10px;
+}
+
+.render-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.render-image-container {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(108, 99, 255, 0.2);
+  background-color: rgba(20, 20, 30, 0.5);
+}
+
+.render-image {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.render-image:hover {
+  transform: scale(1.03);
+}
+
+.render-caption {
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Optimizaciones para dispositivos móviles */
+@media (max-width: 768px) {
+  .renders-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .render-image {
+    /* Optimizaciones para nitidez */
+    image-rendering: -webkit-optimize-contrast;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}

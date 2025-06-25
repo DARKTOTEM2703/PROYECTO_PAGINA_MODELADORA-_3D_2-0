@@ -229,15 +229,33 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     
     ${
-      project.renders
+      project.renders && project.renders.length > 0
         ? `
       <div class="renders-section">
         <h4>RENDERS</h4>
         <div class="renders-grid">
           ${project.renders
             .map(
-              (render) => `
-            <img src="${render}" alt="Render" class="render-image" />
+              (render, index) => `
+            <div class="render-item">
+              <div class="render-image-container">
+                <img src="${render.image || render}" alt="${
+                render.view || `Render ${index + 1}`
+              }" class="render-image" loading="lazy" />
+              </div>
+              <div class="render-caption">${
+                render.view ||
+                (index === 0
+                  ? "Front View"
+                  : index === 1
+                  ? "Back View"
+                  : index === 2
+                  ? "Side View"
+                  : index === 3
+                  ? "Top View"
+                  : `View ${index + 1}`)
+              }</div>
+            </div>
           `
             )
             .join("")}

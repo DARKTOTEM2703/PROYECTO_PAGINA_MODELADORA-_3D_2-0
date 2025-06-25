@@ -15,6 +15,12 @@
         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unrealengine/unrealengine-original.svg",
         "https://seeklogo.com/images/S/substance-painter-logo-B2B86F397C-seeklogo.com.png",
         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg"
+      ],
+      "renders": [
+        { "image": "img/personajes/HOLLOW/front-view.png", "view": "Front View" },
+        { "image": "img/personajes/HOLLOW/back-view.png", "view": "Back View" },
+        { "image": "img/personajes/HOLLOW/side-view.png", "view": "Side View" },
+        { "image": "img/personajes/HOLLOW/top-view.png", "view": "Top View" }
       ]
     },
     {
