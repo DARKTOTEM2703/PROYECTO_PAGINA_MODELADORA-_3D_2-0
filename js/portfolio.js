@@ -198,6 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
     modalTitle.textContent = project.title;
     modalImg.src = project.thumbnail;
     modalImg.alt = project.title;
+    optimizeImageForDevice(modalImg);
 
     // Crear contenido completo del modal
     modalDescription.innerHTML = `
@@ -250,6 +251,21 @@ document.addEventListener("DOMContentLoaded", function () {
     // Mostrar modal
     const bootstrapModal = new bootstrap.Modal(modal);
     bootstrapModal.show();
+  }
+
+  // Función para optimizar imagenes en dispositivos móviles
+  function optimizeImageForDevice(imgElement) {
+    // Comprobar si es un dispositivo móvil
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+      // En móvil, asegurarse que se use la versión más nítida posible
+      imgElement.style.imageRendering = "auto";
+      imgElement.style.maxHeight = "50vh";
+
+      // Remover cualquier transformación que pueda causar blur
+      imgElement.style.transform = "none";
+    }
   }
 
   // Inicializar

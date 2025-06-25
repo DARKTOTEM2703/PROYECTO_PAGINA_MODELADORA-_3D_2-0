@@ -529,6 +529,12 @@ body {
   margin: 0 auto;
   border-radius: 8px;
   transition: transform 0.3s ease;
+
+  /* Optimizaciones para nitidez en móviles */
+  image-rendering: -webkit-optimize-contrast;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 /* Controles del modal */
@@ -702,6 +708,27 @@ body {
 
   .render-image {
     height: 100px;
+  }
+
+  .modal-image-container {
+    max-width: 100%;
+    box-shadow: none; /* Eliminar sombras que pueden causar blur */
+  }
+
+  .modal-image {
+    max-height: 50vh; /* Altura más controlada */
+    border-radius: 4px;
+    image-rendering: auto; /* Restaurar renderizado normal en algunos casos */
+  }
+
+  .modal-content {
+    backdrop-filter: none; /* Eliminar efectos de filtro en móvil */
+  }
+
+  /* Reducir efectos de blur en móviles */
+  .modal-description {
+    backdrop-filter: none;
+    box-shadow: none;
   }
 }
 
