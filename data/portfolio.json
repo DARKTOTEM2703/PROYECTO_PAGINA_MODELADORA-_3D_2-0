@@ -9,9 +9,11 @@
       "description": "Modelado 3D del personaje principal de Hollow Knight",
       "detailedDescription": "Hollow Knight fan art represented in a 3D diorama, capturing the essence and characteristic details of the original game. The model was created from scratch in Blender, where the base mesh was developed and optimized through a retopology process. The most detailed parts of the character were sculpted in ZBrush to add greater definition and fidelity to the design.\n\nTexturing was carried out in Substance Painter, applying a PBR workflow to achieve realistic and well-defined materials. This project was developed during my studies at ENTI (Escola de Noves Tecnologies Interactives), as part of the higher degree in Character Design and Development. The objective of the assignment was to create a 3D model of a creature, applying modeling, sculpting, and texturing techniques for real-time engines.",
       "softwares": [
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg",
-        "img/icons/zbrush.png",
-        "img/icons/substance-painter.png",
+        "https://download.blender.org/branding/community/blender_community_badge_orange.svg",
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+        "https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg",
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unrealengine/unrealengine-original.svg",
+        "https://seeklogo.com/images/S/substance-painter-logo-B2B86F397C-seeklogo.com.png",
         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg"
       ]
     },
