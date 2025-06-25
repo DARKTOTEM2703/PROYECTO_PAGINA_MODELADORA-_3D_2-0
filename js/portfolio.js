@@ -264,11 +264,43 @@ document.addEventListener("DOMContentLoaded", function () {
     `
         : ""
     }
+    
+    ${
+      project.video
+        ? `
+      <div class="turntable-section">
+        <h4>TURNTABLE</h4>
+        <div class="video-container">
+          <video class="model-video" controls preload="metadata" poster="${
+            project.videoPoster || project.thumbnail
+          }">
+            <source src="${project.video}" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+          </video>
+          <div class="video-controls">
+            <button class="control-btn play-btn" title="Play">
+              <i class="fas fa-play"></i>
+            </button>
+            <button class="control-btn fullscreen-btn" title="Pantalla completa">
+              <i class="fas fa-expand"></i>
+            </button>
+          </div>
+          <div class="video-caption">${
+            project.videoCaption || "Turntable"
+          }</div>
+        </div>
+      </div>
+    `
+        : ""
+    }
   `;
 
-    // Mostrar modal
+    // Inicializar controles de video personalizados después de mostrar el modal
     const bootstrapModal = new bootstrap.Modal(modal);
     bootstrapModal.show();
+
+    // Configurar controles de video personalizados
+    setTimeout(setupVideoControls, 300);
   }
 
   // Función para optimizar imagenes en dispositivos móviles
@@ -284,6 +316,124 @@ document.addEventListener("DOMContentLoaded", function () {
       // Remover cualquier transformación que pueda causar blur
       imgElement.style.transform = "none";
     }
+  }
+
+  // Función para configurar controles de video personalizados
+  function setupVideoControls() {
+    const video = document.querySelector(".model-video");
+    if (!video) return;
+
+    const playBtn = document.querySelector(".play-btn");
+    const fullscreenBtn = document.querySelector(".fullscreen-btn");
+    const videoContainer = document.querySelector(".video-container");
+
+    if (playBtn) {
+      playBtn.addEventListener("click", function () {
+        if (video.paused) {
+          video.play();
+          this.innerHTML = '<i class="fas fa-pause"></i>';
+          videoContainer.classList.add("playing");
+        } else {
+          video.pause();
+          this.innerHTML = '<i class="fas fa-play"></i>';
+          videoContainer.classList.remove("playing");
+        }
+      });
+    }
+
+    if (fullscreenBtn) {
+      fullscreenBtn.addEventListener("click", function () {
+        if (video.requestFullscreen) {
+          video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) {
+          video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) {
+          video.msRequestFullscreen();
+        }
+      });
+    }
+
+    // Mostrar controles nativos en móvil para mejor experiencia
+    if (window.innerWidth <= 768) {
+      video.controls = true;
+      document.querySelector(".video-controls").style.display = "none";
+    }
+
+    // Actualizar botón cuando termine el video
+    video.addEventListener("ended", function () {
+      if (playBtn) {
+        playBtn.innerHTML = '<i class="fas fa-redo"></i>';
+        videoContainer.classList.remove("playing");
+      }
+    });
+  }
+
+  // Función para optimizar la carga de video y mejorar el scroll
+  function optimizeVideoScroll() {
+    // Obtener todos los videos
+    const videos = document.querySelectorAll('.model-video');
+    
+    if (!videos.length) return;
+    
+    // Observer para cargar video solo cuando sea visible
+    const videoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          const video = entry.target;
+          
+          // Si el video es visible
+          if (entry.isIntersecting) {
+            // Reducir prioridad de carga para no bloquear otros elementos
+            setTimeout(() => {
+              // Establecer el atributo preload a "metadata" para cargar solo metadata inicialmente
+              video.preload = "metadata";
+              
+              // Cambiar el source para que comience a precargar
+              if (video.dataset.src) {
+                const source = video.querySelector('source');
+                if (source) source.src = video.dataset.src;
+                video.load();
+                delete video.dataset.src;
+              }
+            }, 1000); // Retraso para permitir que el resto de la página se cargue primero
+            
+            // Dejar de observar una vez iniciada la carga
+            videoObserver.unobserve(video);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    
+    // Observar todos los videos
+    videos.forEach(video => {
+      // Solo observar si tiene data-src
+      if (video.querySelector('source').src) {
+        video.dataset.src = video.querySelector('source').src;
+        video.querySelector('source').removeAttribute('src');
+      }
+      videoObserver.observe(video);
+    });
+    
+    // Pausar videos cuando no son visibles (ahorra recursos)
+    document.addEventListener('scroll', function() {
+      videos.forEach(video => {
+        const rect = video.getBoundingClientRect();
+        const isVisible = (
+          rect.top >= 0 &&
+          rect.top <= (window.innerHeight || document.documentElement.clientHeight)
+        );
+        
+        if (!isVisible && !video.paused) {
+          video.pause();
+          const videoContainer = video.closest('.video-container');
+          if (videoContainer) videoContainer.classList.remove('playing');
+          
+          const playBtn = videoContainer?.querySelector('.play-btn');
+          if (playBtn) playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        }
+      });
+    }, { passive: true });
   }
 
   // Inicializar
@@ -317,4 +467,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.body.removeChild(link);
     }
   });
+
+  // Optimizar carga de video y scroll
+  optimizeVideoScroll();
 });

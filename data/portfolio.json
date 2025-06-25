@@ -21,7 +21,10 @@
         { "image": "img/personajes/HOLLOW/back-view.png", "view": "Back View" },
         { "image": "img/personajes/HOLLOW/side-view.png", "view": "Side View" },
         { "image": "img/personajes/HOLLOW/top-view.png", "view": "Top View" }
-      ]
+      ],
+      "video": "img/personajes/HOLLOW/media/hollowvideo.mp4",
+      "videoPoster": "img/personajes/HOLLOW/front-view.png",
+      "videoCaption": "Turntable"
     },
     {
       "id": "pochita",
