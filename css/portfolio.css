@@ -496,6 +496,34 @@ body {
   overflow: hidden;
 }
 
+/* Estilos para la fecha en el modal */
+.modal-header {
+  background: linear-gradient(to right, #2a2a3e, #3a3a4e);
+  border-bottom: 1px solid rgba(108, 99, 255, 0.3);
+  padding: 20px 25px;
+  text-align: center;
+}
+
+.modal-title {
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+  text-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
+  margin-bottom: 8px;
+}
+
+.modal-date {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0;
+  opacity: 0.8;
+}
+
 .modal-header {
   background: linear-gradient(to right, #2a2a3e, #3a3a4e);
   border-bottom: 1px solid rgba(108, 99, 255, 0.3);
@@ -1012,6 +1040,38 @@ body {
 .video-container.playing::after,
 .video-container:hover::after {
   opacity: 0;
+}
+
+/* Descripción específica del turntable */
+.turntable-description {
+  margin-top: 25px;
+  padding: 20px;
+  background: rgba(15, 15, 25, 0.7);
+  border-radius: 8px;
+  border-left: 3px solid #6c63ff;
+  backdrop-filter: blur(5px);
+}
+
+.turntable-description p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-align: center;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Responsive para turntable-description */
+@media (max-width: 768px) {
+  .turntable-description {
+    padding: 15px;
+    margin-top: 20px;
+  }
+
+  .turntable-description p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
 }
 
 /* Optimizaciones para dispositivos móviles */

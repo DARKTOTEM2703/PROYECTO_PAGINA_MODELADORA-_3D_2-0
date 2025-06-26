@@ -4,17 +4,20 @@
       "id": "hollow-knight",
       "title": "HOLLOW KNIGHT",
       "category": ["characters", "videogames"],
+      "creationDate": "2024-03-15",
+      "displayDate": "2024",
       "folder": "Personajes/HOLLOW",
       "thumbnail": "img/personajes/HOLLOW/hollow.png",
       "description": "Modelado 3D del personaje principal de Hollow Knight",
       "detailedDescription": "Hollow Knight fan art represented in a 3D diorama, capturing the essence and characteristic details of the original game. The model was created from scratch in Blender, where the base mesh was developed and optimized through a retopology process. The most detailed parts of the character were sculpted in ZBrush to add greater definition and fidelity to the design.\n\nTexturing was carried out in Substance Painter, applying a PBR workflow to achieve realistic and well-defined materials. This project was developed during my studies at ENTI (Escola de Noves Tecnologies Interactives), as part of the higher degree in Character Design and Development. The objective of the assignment was to create a 3D model of a creature, applying modeling, sculpting, and texturing techniques for real-time engines.",
       "softwares": [
-        "https://download.blender.org/branding/community/blender_community_badge_orange.svg",
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-        "https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg",
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unrealengine/unrealengine-original.svg",
-        "https://seeklogo.com/images/S/substance-painter-logo-B2B86F397C-seeklogo.com.png",
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg"
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg",
+        "https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2F1ce9df14-8874-419f-9b05-86dec0220f24/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAALNG2c9T5Rm7RNLq-X6bOBnSqrvpQIteefCIdLeJea5b&exp=1750899140&osig=AAAAAAAAAAAAAAAAAAAAAIduITYoTGKP5eirmw5Mo07u4goeHh95M5adaw_j7dj4&signer=media-rpc&x-canva-quality=thumbnail",
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC5ElEQVR4nO3YS6hVVRzH8e1bEfORmgkWCvkiaaJOQnxQUJJB0NBQKJQQFF9BA3EW4mPgwFS0JoGUBUFU4igJFQUrCBWxkFTIRyZqPpH8yKJ1aLG95967z7nbe4/sL5zB2Xv/1/r91/+//+u/dpZVVFRUVFSUCJ7CLvyFq9iOoVmrgN0e5SgGZK0ALmqbVVkrgPN1HDiWtQJ4HXfacOBm1ipgGj6P6XQXl/BZ1tMI1QUv4ZX4m4VJ6Jv1VDAVH+OM+oRV34elGJ7Y9sI7+CWkFA5iyuMS/jQ+xYMo8m+cwO12HKk990GM0A/x2n0cxkn8HhwrW/zMpLr8hDm5VZ0dc/5fHfMJRkbb5fHamDLFz43hDnyPge08+zKOd+DA+bj6f8T/Z0uLQAz7rWTy8Z2wGYBtnYhELZXmlyX+Rfzjf+4XsH0WF7TPZbxZZnkML1fKvk7ajkzSKKTcZpyL78eNWHlWhqavFPFJ6tT4Fes701FGx49Fu93dth/4r7K8hgkFbAbjUBS/pfTS2JWgf9y4AhuyVgADY9lciyN1XtJwDtiKN9CvJ4jujXlxR76uGOGE9mFIte4Q3g+LcErz/In3Hqf4tzto3Brly7JL6Xh8p1xO4bkyxL9VJ8fDRvRj0pH+hq+xEcuwBAuxGKuxCd/GjaweIbrPd2X9/ygRWOvtv8ICDEla4oNFKkuM6NJon+9aT6fnhmYc2JwTHv4/k9T60BoErmBcE/O8gB25s8T+UOWaEb8mGSy0A5Nyu+w3SQf5asMTPRqVcF6usSJrBExMviSElRiU3BuHn+O9EPrFDU1Sf+4TiQPh3DG2kUH2JqkxLHeYuZCs/LtdKT6Qa9kDO7Oi4Fo0DuEchRnYk7zMV7oqbfLE/SAlLNTErAjxI2xbPIiOjC40YLG5RyQpWmNv0UHeT5y4HQ8kmwqvRHNfPA7kFm56I41an9JUdjx/H6zDvejEF1krgskxbRd1t5aKioqKJ5CHdRjroogDm/gAAAAASUVORK5CYII=",
+        "img/icons/Autodesk_Maya.svg",
+        "https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2Ff14805ac-5bb1-4d52-bdbe-f566a69eac14/watermark:F/width:199?csig=AAAAAAAAAAAAAAAAAAAAANWQvZmQ0YZLDGw8lEsjGcUrKelks8j4MLN8STrFN-v7&exp=1750898576&osig=AAAAAAAAAAAAAAAAAAAAACY1o6PIbY8-kOlW4ZN_2ANPa8oxzXJ-eAlz78L7xCgK&signer=media-rpc&x-canva-quality=thumbnail",
+        "https://media.canva.com/v2/image-resize/format:PNG/height:200/quality:100/uri:ifs%3A%2F%2FM%2Ff7265005-e4b4-483e-bafc-381b1824c7df/watermark:F/width:177?csig=AAAAAAAAAAAAAAAAAAAAAM-cHgkskftRKGkCxRsEpqSRdq8PiN0l38ole5xVrwNM&exp=1750899481&osig=AAAAAAAAAAAAAAAAAAAAAOH8IZ8Sf6r0dU3N_fXTr949GiX358PhzsU3STZ7_1DF&signer=media-rpc&x-canva-quality=thumbnail",
+        "https://media.canva.com/v2/image-resize/format:PNG/height:195/quality:100/uri:ifs%3A%2F%2FM%2Fd7e8521d-2850-48b1-8cd3-7c05554db54a/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAAFNdx9vrN8JENFxu6AJpvnKwh7ILrsZ1Q2_Hj5DGZQO-&exp=1750899502&osig=AAAAAAAAAAAAAAAAAAAAAE5ez6-sKZRFibj2F9iY32IJ5jJra2X1gW5HbrEoWs2O&signer=media-rpc&x-canva-quality=thumbnail"
       ],
       "renders": [
         { "image": "img/personajes/HOLLOW/front-view.png", "view": "Front View" },
@@ -24,12 +27,15 @@
       ],
       "video": "img/personajes/HOLLOW/media/hollowvideo.mp4",
       "videoPoster": "img/personajes/HOLLOW/front-view.png",
-      "videoCaption": "Turntable"
+      "videoCaption": "Turntable",
+      "turntableDescription": "This project was created with the purpose of artistically representing my favorite character from my favorite video game, Hollow Knight. I am proud of the final result and the opportunity to develop it during my studies. "
     },
     {
       "id": "pochita",
       "title": "POCHITA", 
       "category": ["characters"],
+      "creationDate": "2024-02-10",
+      "displayDate": "2024",
       "folder": "Personajes/POCHITA",
       "thumbnail": "img/personajes/POCHITA/POCHITA-PRINCIPAL.png",
       "description": "Modelado 3D de Pochita de Chainsaw Man",
@@ -38,7 +44,18 @@
         "img/icons/blender.png",
         "img/icons/zbrush.png",
         "img/icons/photoshop.png"
-      ]
+      ],
+      "renders": [
+        { "image": "img/personajes/HOLLOW/front-view.png", "view": "Front View" },
+        { "image": "img/personajes/HOLLOW/back-view.png", "view": "Back View" },
+        { "image": "img/personajes/HOLLOW/side-view.png", "view": "Side View" },
+        { "image": "img/personajes/HOLLOW/top-view.png", "view": "Top View" }
+      ],
+      "video": "img/personajes/HOLLOW/media/hollowvideo.mp4",
+      "videoPoster": "img/personajes/HOLLOW/front-view.png",
+      "videoCaption": "Turntable",
+      "turntableDescription": "This project was created with the purpose of artistically representing my favorite character from my favorite video game, Hollow Knight. I am proud of the final result and the opportunity to develop it during my studies. "
+
     },
     {
       "id": "tomie",

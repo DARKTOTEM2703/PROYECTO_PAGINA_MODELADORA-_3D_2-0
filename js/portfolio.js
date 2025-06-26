@@ -189,13 +189,19 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   }); // Abrir modal del proyecto
+  // Función para abrir modal del proyecto
   function openProjectModal(project) {
     const modal = document.getElementById("portfolioModal");
     const modalTitle = modal.querySelector(".modal-title");
     const modalImg = modal.querySelector(".modal-image");
     const modalDescription = modal.querySelector(".modal-description");
 
-    modalTitle.textContent = project.title;
+    // Crear título con fecha
+    const titleWithDate = project.displayDate
+      ? `${project.title} • ${project.displayDate}`
+      : project.title;
+
+    modalTitle.textContent = titleWithDate;
     modalImg.src = project.thumbnail;
     modalImg.alt = project.title;
     optimizeImageForDevice(modalImg);
@@ -271,14 +277,19 @@ document.addEventListener("DOMContentLoaded", function () {
       <div class="turntable-section">
         <h4>TURNTABLE</h4>
         <div class="video-container">
-          <video class="model-video" controls preload="metadata" poster="${
-            project.videoPoster || project.thumbnail
-          }">
+          <video 
+            class="model-video" 
+            preload="metadata" 
+            poster="${project.videoPoster || project.thumbnail}"
+            loop
+            muted
+            playsinline
+          >
             <source src="${project.video}" type="video/mp4">
             Tu navegador no soporta videos HTML5.
           </video>
           <div class="video-controls">
-            <button class="control-btn play-btn" title="Play">
+            <button class="control-btn play-btn" title="Play/Pause">
               <i class="fas fa-play"></i>
             </button>
             <button class="control-btn fullscreen-btn" title="Pantalla completa">
@@ -289,6 +300,17 @@ document.addEventListener("DOMContentLoaded", function () {
             project.videoCaption || "Turntable"
           }</div>
         </div>
+        
+        <!-- DESCRIPCIÓN ESPECÍFICA DEL TURNTABLE -->
+        ${
+          project.turntableDescription
+            ? `
+            <div class="turntable-description">
+              <p>${project.turntableDescription}</p>
+            </div>
+          `
+            : ""
+        }
       </div>
     `
         : ""
@@ -327,6 +349,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const fullscreenBtn = document.querySelector(".fullscreen-btn");
     const videoContainer = document.querySelector(".video-container");
 
+    // Configurar video para reproducción automática en bucle
+    video.loop = true;
+    video.muted = true; // Necesario para autoplay en muchos navegadores
+
+    // Intentar autoplay después de que el modal esté completamente cargado
+    setTimeout(() => {
+      video.play().catch((error) => {
+        console.log("Autoplay bloqueado por el navegador:", error);
+        // Si autoplay falla, mostrar el botón de play
+        videoContainer.classList.remove("playing");
+      });
+    }, 500);
+
+    // Event listener para el botón de play personalizado
     if (playBtn) {
       playBtn.addEventListener("click", function () {
         if (video.paused) {
@@ -340,6 +376,25 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     }
+
+    // Event listener para el overlay de play grande (botón frontal)
+    videoContainer.addEventListener("click", function (e) {
+      // Solo actuar si el click no es en los controles
+      if (
+        !e.target.closest(".video-controls") &&
+        !e.target.closest(".control-btn")
+      ) {
+        if (video.paused) {
+          video.play();
+          videoContainer.classList.add("playing");
+          if (playBtn) playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        } else {
+          video.pause();
+          videoContainer.classList.remove("playing");
+          if (playBtn) playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        }
+      }
+    });
 
     if (fullscreenBtn) {
       fullscreenBtn.addEventListener("click", function () {
@@ -356,14 +411,39 @@ document.addEventListener("DOMContentLoaded", function () {
     // Mostrar controles nativos en móvil para mejor experiencia
     if (window.innerWidth <= 768) {
       video.controls = true;
-      document.querySelector(".video-controls").style.display = "none";
+      video.loop = true;
+      document
+        .querySelector(".video-controls")
+        ?.style.setProperty("display", "none");
     }
 
-    // Actualizar botón cuando termine el video
+    // Event listeners para estados del video
+    video.addEventListener("play", function () {
+      videoContainer.classList.add("playing");
+      if (playBtn) playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+    });
+
+    video.addEventListener("pause", function () {
+      videoContainer.classList.remove("playing");
+      if (playBtn) playBtn.innerHTML = '<i class="fas fa-play"></i>';
+    });
+
+    // Como el video está en loop, no necesitamos manejar el evento 'ended'
+    // pero lo mantenemos por compatibilidad
     video.addEventListener("ended", function () {
       if (playBtn) {
-        playBtn.innerHTML = '<i class="fas fa-redo"></i>';
+        playBtn.innerHTML = '<i class="fas fa-play"></i>';
         videoContainer.classList.remove("playing");
+      }
+    });
+
+    // Mejorar la experiencia cuando el video está listo
+    video.addEventListener("loadeddata", function () {
+      // El video está listo, intentar reproducir si no se está reproduciendo ya
+      if (video.paused) {
+        video.play().catch((error) => {
+          console.log("No se pudo iniciar la reproducción automática:", error);
+        });
       }
     });
   }
@@ -371,32 +451,32 @@ document.addEventListener("DOMContentLoaded", function () {
   // Función para optimizar la carga de video y mejorar el scroll
   function optimizeVideoScroll() {
     // Obtener todos los videos
-    const videos = document.querySelectorAll('.model-video');
-    
+    const videos = document.querySelectorAll(".model-video");
+
     if (!videos.length) return;
-    
+
     // Observer para cargar video solo cuando sea visible
     const videoObserver = new IntersectionObserver(
       (entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
           const video = entry.target;
-          
+
           // Si el video es visible
           if (entry.isIntersecting) {
             // Reducir prioridad de carga para no bloquear otros elementos
             setTimeout(() => {
               // Establecer el atributo preload a "metadata" para cargar solo metadata inicialmente
               video.preload = "metadata";
-              
+
               // Cambiar el source para que comience a precargar
               if (video.dataset.src) {
-                const source = video.querySelector('source');
+                const source = video.querySelector("source");
                 if (source) source.src = video.dataset.src;
                 video.load();
                 delete video.dataset.src;
               }
             }, 1000); // Retraso para permitir que el resto de la página se cargue primero
-            
+
             // Dejar de observar una vez iniciada la carga
             videoObserver.unobserve(video);
           }
@@ -404,36 +484,40 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       { threshold: 0.1 }
     );
-    
+
     // Observar todos los videos
-    videos.forEach(video => {
+    videos.forEach((video) => {
       // Solo observar si tiene data-src
-      if (video.querySelector('source').src) {
-        video.dataset.src = video.querySelector('source').src;
-        video.querySelector('source').removeAttribute('src');
+      if (video.querySelector("source").src) {
+        video.dataset.src = video.querySelector("source").src;
+        video.querySelector("source").removeAttribute("src");
       }
       videoObserver.observe(video);
     });
-    
+
     // Pausar videos cuando no son visibles (ahorra recursos)
-    document.addEventListener('scroll', function() {
-      videos.forEach(video => {
-        const rect = video.getBoundingClientRect();
-        const isVisible = (
-          rect.top >= 0 &&
-          rect.top <= (window.innerHeight || document.documentElement.clientHeight)
-        );
-        
-        if (!isVisible && !video.paused) {
-          video.pause();
-          const videoContainer = video.closest('.video-container');
-          if (videoContainer) videoContainer.classList.remove('playing');
-          
-          const playBtn = videoContainer?.querySelector('.play-btn');
-          if (playBtn) playBtn.innerHTML = '<i class="fas fa-play"></i>';
-        }
-      });
-    }, { passive: true });
+    document.addEventListener(
+      "scroll",
+      function () {
+        videos.forEach((video) => {
+          const rect = video.getBoundingClientRect();
+          const isVisible =
+            rect.top >= 0 &&
+            rect.top <=
+              (window.innerHeight || document.documentElement.clientHeight);
+
+          if (!isVisible && !video.paused) {
+            video.pause();
+            const videoContainer = video.closest(".video-container");
+            if (videoContainer) videoContainer.classList.remove("playing");
+
+            const playBtn = videoContainer?.querySelector(".play-btn");
+            if (playBtn) playBtn.innerHTML = '<i class="fas fa-play"></i>';
+          }
+        });
+      },
+      { passive: true }
+    );
   }
 
   // Inicializar
