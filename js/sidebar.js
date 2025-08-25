@@ -44,10 +44,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Event listener para overlay
+  // Event listener para overlay (mejorado para animación)
   document.addEventListener("click", function (e) {
     if (e.target.classList.contains("sidebar-overlay")) {
-      hideSidebar();
+      // Agrega animación de salida antes de ocultar
+      sidebar.classList.remove("mobile-visible");
+      sidebar.classList.add("mobile-hiding");
+      setTimeout(() => {
+        sidebar.classList.remove("mobile-hiding");
+        sidebar.classList.add("mobile-hidden");
+        sidebarToggle.classList.remove("active");
+        document.querySelector(".sidebar-overlay").classList.remove("active");
+        document.body.style.overflow = "";
+      }, 300); // Duración igual a la transición CSS
     }
   });
 
