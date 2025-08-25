@@ -27,10 +27,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // Función para ocultar sidebar
   function hideSidebar() {
     sidebar.classList.remove("mobile-visible");
-    sidebar.classList.add("mobile-hidden");
-    sidebarToggle.classList.remove("active"); // Restaurar botón hamburguesa
-    document.querySelector(".sidebar-overlay").classList.remove("active");
+    sidebar.classList.add("mobile-hiding");
+    sidebarOverlay.classList.remove("active");
+    sidebarToggle.classList.remove("active");
     document.body.style.overflow = "";
+    setTimeout(() => {
+      sidebar.classList.remove("mobile-hiding");
+      sidebar.classList.add("mobile-hidden");
+    }, 350);
   }
 
   // Event listeners para botón toggle
@@ -44,19 +48,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Event listener para overlay (mejorado para animación)
+  // Event listener para overlay
   document.addEventListener("click", function (e) {
     if (e.target.classList.contains("sidebar-overlay")) {
-      // Agrega animación de salida antes de ocultar
-      sidebar.classList.remove("mobile-visible");
-      sidebar.classList.add("mobile-hiding");
-      setTimeout(() => {
-        sidebar.classList.remove("mobile-hiding");
-        sidebar.classList.add("mobile-hidden");
-        sidebarToggle.classList.remove("active");
-        document.querySelector(".sidebar-overlay").classList.remove("active");
-        document.body.style.overflow = "";
-      }, 300); // Duración igual a la transición CSS
+      hideSidebar();
     }
   });
 
@@ -124,3 +119,11 @@ document.addEventListener("DOMContentLoaded", function () {
   initMobileState();
   window.addEventListener("resize", initMobileState);
 });
+function showSidebar() {
+  sidebar.classList.add('mobile-visible');
+  sidebarOverlay.classList.add('active');
+}
+function hideSidebar() {
+  sidebar.classList.remove('mobile-visible');
+  sidebarOverlay.classList.remove('active');
+}

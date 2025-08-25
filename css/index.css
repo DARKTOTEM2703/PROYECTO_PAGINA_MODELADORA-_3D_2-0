@@ -360,6 +360,28 @@ body {
   transform: scale(1.2);
 }
 
+/* Nueva clase para la superposición del sidebar */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  z-index: 999; /* Menor que el sidebar */
+  opacity: 1;
+  pointer-events: none;
+  transition: none;
+}
+
+.sidebar-overlay.active {
+  pointer-events: auto;
+}
+
+.sidebar {
+  z-index: 1000; /* Sidebar por encima del overlay */
+}
+
 /* Responsive ajustado */
 @media (max-width: 768px) {
 
