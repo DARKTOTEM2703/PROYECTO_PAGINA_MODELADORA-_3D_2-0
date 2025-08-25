@@ -1190,120 +1190,154 @@ body {
 
 /* Items de contenido */
 .timeline-item {
-  padding: 0 30px;
-  color: #e6e3e8;
+  position: relative;
+  background: rgba(42,42,62,0.85);
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  padding: 24px 32px;
+  margin-bottom: 0;
+  opacity: 0;
+  transform: translateY(40px) scale(0.97);
+  animation: timelineFadeIn 0.7s cubic-bezier(.4,0,.2,1) forwards;
 }
+.timeline-row .timeline-item.left { animation-delay: 0.1s; }
+.timeline-row .timeline-item.right { animation-delay: 0.3s; }
+
+@keyframes timelineFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 .timeline-item h3 {
-  font-size: 1.15rem;
-  color: #ffffff;
-  margin-bottom: 6px;
+  font-size: 1.2rem;
+  color: #6c63ff;
+  margin-bottom: 8px;
   font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(108,99,255,0.08);
 }
 .timeline-item .timeline-date {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.55);
-  margin-bottom: 12px;
+  font-size: 0.95rem;
+  color: #b3aeba;
+  margin-bottom: 14px;
   font-weight: 500;
+  letter-spacing: 0.6px;
 }
 .timeline-item ul {
   list-style: none;
-  padding-left: 16px;
+  padding-left: 18px;
   margin: 0;
 }
 .timeline-item ul li {
   position: relative;
-  padding-left: 12px;
-  margin-bottom: 8px;
-  color: rgba(255,255,255,0.85);
-  font-size: 0.95rem;
-  line-height: 1.5;
+  padding-left: 14px;
+  margin-bottom: 10px;
+  color: #e8e8e8;
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: timelineListIn 0.5s cubic-bezier(.4,0,.2,1) forwards;
+  animation-delay: 0.6s;
 }
 .timeline-item ul li::before {
   content: "•";
   position: absolute;
   left: -8px;
   top: 0;
-  color: rgba(255,255,255,0.45);
-  font-size: 1rem;
+  color: #6c63ff;
+  font-size: 1.1rem;
   line-height: 1;
 }
 
-/* Ajustes de alineación: margen para dejar espacio visual hacia la línea */
+@keyframes timelineListIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mejoras visuales en desktop */
 .timeline-item.left {
   text-align: left;
-  padding-right: 20px;
+  padding-right: 24px;
 }
 .timeline-item.right {
   text-align: left;
-  padding-left: 20px;
+  padding-left: 24px;
 }
-
-/* Para que el conector parezca salir hacia los items, añadimos una pequeña barra horizontal */
-.timeline-row .timeline-center .connector::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: -0.5px;
-  height: 4px;
-  width: 0px; /* no necesario aquí, las líneas horizontales las creamos con pseudo en items */
-}
-
-/* líneas horizontales desde cada item hasta el centro (usando pseudo del item) */
-.timeline-item.left::after {
-  content: "";
-  position: absolute;
-  right: -40px; /* distancia hasta la columna central */
-  top: 28px;
-  width: 40px;
-  height: 4px;
-  background: linear-gradient(#d2cfd6,#bfb9c6);
-  border-radius: 2px;
-  z-index: 2;
-}
+.timeline-item.left::after,
 .timeline-item.right::after {
   content: "";
   position: absolute;
-  left: -40px;
-  top: 28px;
+  top: 32px;
   width: 40px;
   height: 4px;
-  background: linear-gradient(#d2cfd6,#bfb9c6);
+  background: linear-gradient(90deg,#6c63ff,#b3aeba);
   border-radius: 2px;
   z-index: 2;
 }
+.timeline-item.left::after { right: -40px; }
+.timeline-item.right::after { left: -40px; }
 
-/* Responsive: colapsa a una columna en móvil */
+/* Responsive: vista móvil mejorada */
 @media (max-width: 768px) {
-  .experience-section { padding: 30px 18px; }
-  .experience-title { font-size: 1.8rem; }
-  .timeline::before { left: 20px; transform: translateX(0); }
-  .timeline-dot { left: 20px; transform: translateX(0); }
+  .timeline {
+    padding: 10px 0;
+  }
+  .timeline::before {
+    left: 22px; /* Barra vertical más centrada respecto a los conectores */
+    width: 4px;
+    top: 24px;
+    bottom: 24px;
+  }
+  .timeline-dot {
+    left: 22px;
+    width: 14px;
+    height: 14px;
+  }
   .timeline-row {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 0;
     margin: 18px 0;
   }
   .timeline-center { display: none; }
   .timeline-item {
-    padding: 12px 18px 12px 56px;
-    position: relative;
+    padding: 18px 18px 18px 52px; /* Más espacio a la izquierda para separar el contenido */
+    margin-bottom: 18px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+    background: rgba(42,42,62,0.96);
+  }
+  .timeline-item.left,
+  .timeline-item.right {
+    padding-left: 52px;
+    padding-right: 10px;
+    text-align: left;
   }
   .timeline-item.left::after,
   .timeline-item.right::after {
-    content: "";
-    position: absolute;
-    left: 28px;
-    top: 28px;
-    width: 12px;
+    left: 22px; /* Pegado y alineado con la barra vertical */
+    top: 32px;
+    width: 12px; /* Barrita corta y pegada */
     height: 12px;
-    background: #d7d3d8;
-    border-radius: 3px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.45);
+    background: #6c63ff;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(108,99,255,0.18);
+    z-index: 2;
   }
-  .timeline-item ul li { font-size: 0.92rem; }
+  .timeline-item h3 {
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+  }
+  .timeline-item .timeline-date {
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+  }
+  .timeline-item ul li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
 }
-
-/* pequeños refinamientos visuales */
-.timeline-item h3 { letter-spacing: 0.3px; }
-.timeline-item .timeline-date { letter-spacing: 0.6px; }
