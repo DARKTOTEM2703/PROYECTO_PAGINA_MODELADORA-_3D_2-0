@@ -68,6 +68,12 @@
         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg",
         "img/icons/zbrush.png",
         "img/icons/photoshop.webp"
+      ],
+      "renders": [
+        { "image": "img/personajes/tomie/Screenshot_1.jpg", "view": "Front View" },
+        { "image": "img/personajes/tomie/Screenshot_2.jpg", "view": "Back View" },
+        { "image": "img/personajes/tomie/Screenshot_3.jpg", "view": "Side View" },
+        { "image": "img/personajes/tomie/Screenshot_15.jpg", "view": "Top View" }
       ]
     },
     {
@@ -75,7 +81,7 @@
       "title": "CHICA ROSA",
       "category": ["characters"],
       "folder": "Personajes/CHICAROSA",
-      "thumbnail": "img/portfolio/chicarosa.jpg",
+      "thumbnail": "img/Personajes/CHICAROSA/Foto-principal.jpg",
       "description": "Modelado de personaje femenino"
     },
     {
@@ -83,7 +89,7 @@
       "title": "SEED SEEDS",
       "category": ["gamejams", "videogames"],
       "folder": "Gamejams/SEED SEEDS",
-      "thumbnail": "img/portfolio/seed-seeds.jpg",
+      "thumbnail": "img/Gamejams/SEEDSEEDS/SEEDSEEDSPRINCIPAL.png",
       "description": "Proyecto de game jam con temática de plantas"
     },
     {
