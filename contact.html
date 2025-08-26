@@ -68,29 +68,30 @@
                         <i class="fas fa-envelope-open-text"></i> Contáctame
                     </h2>
 
-                    <!-- Mensaje alentador -->
                     <p class="contact-encourage">
                       ¿Tienes una idea, proyecto o consulta? Me encantaría saberlo. 
                       Escríbeme con los detalles (aunque sean solo unas líneas) y te responderé lo antes posible.
                     </p>
 
-                    <!-- Estado / resultados -->
                     <div id="formStatus" class="form-status" aria-live="polite"></div>
 
-                    <!-- Formulario: pon aquí tu endpoint de Formspree -->
+                    <!-- FORM: usa placeholders (se borran al foco) -->
                     <form id="contactForm" autocomplete="off" data-formspree="https://formspree.io/f/YOUR_FORMSPREE_ID" novalidate>
-                        <div class="form-floating mb-4">
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Tu nombre" required>
-                            <label for="name"><i class="fas fa-user"></i> Nombre</label>
+                        <div class="field mb-3">
+                            <label class="sr-only" for="name">Nombre</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Nombre" required>
                         </div>
-                        <div class="form-floating mb-4">
-                            <input type="email" id="email" name="email" class="form-control" placeholder="Tu correo electrónico" required>
-                            <label for="email"><i class="fas fa-at"></i> Correo electrónico</label>
+
+                        <div class="field mb-3">
+                            <label class="sr-only" for="email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Correo electrónico" required>
                         </div>
-                        <div class="form-floating mb-4">
+
+                        <div class="field mb-3">
+                            <label class="sr-only" for="message">Mensaje</label>
                             <textarea id="message" name="message" class="form-control" placeholder="Escribe tu mensaje..." required></textarea>
-                            <label for="message"><i class="fas fa-comment-dots"></i> Mensaje</label>
                         </div>
+
                         <div class="d-flex gap-3 justify-content-center mt-4 form-actions">
                             <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
                                 <i class="fas fa-paper-plane"></i> Enviar
@@ -103,7 +104,7 @@
 
                     <div class="contact-info mt-4 text-center">
                         <span><i class="fas fa-info-circle"></i> También puedes escribirme a
-                            <b>samanthabello@gmail.com</b></span>
+                            <b>samy.bello2809@gmail.com</b></span>
                     </div>
                 </div>
             </section>
@@ -129,7 +130,7 @@
       const message = document.getElementById('message').value;
       const subject = encodeURIComponent('Contacto desde la página web');
       const body = encodeURIComponent(`Nombre: ${name}\nCorreo: ${email}\nMensaje:\n${message}`);
-      window.location.href = `mailto:samanthabello@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:samy.bello2809@gmail.com?subject=${subject}&body=${body}`;
     });
     </script>
 </body>

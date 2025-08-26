@@ -65,9 +65,9 @@
       "description": "Modelado 3D del personaje Tomie",
       "detailedDescription": "Interpretación 3D del icónico personaje Tomie de Junji Ito. El proyecto se enfocó en capturar la esencia inquietante y la belleza perturbadora del personaje, trabajando especialmente en los detalles faciales y la expresión. Se utilizaron técnicas avanzadas de sculpting para lograr las características distintivas.",
       "softwares": [
-        "img/icons/blender.png",
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg",
         "img/icons/zbrush.png",
-        "img/icons/photoshop.png"
+        "img/icons/photoshop.webp"
       ]
     },
     {

@@ -343,7 +343,7 @@ form{position:relative;z-index:2;display:flex;flex-direction:column;gap:14px}
   border-color:var(--accent-1);
   box-shadow:0 8px 30px rgba(108,99,255,0.12);
   transform:translateY(-2px);
-  color:#ffffff;
+
 }
 .form-floating > .form-control:focus ~ label,
 .form-floating > .form-control:not(:placeholder-shown) ~ label{
@@ -707,39 +707,219 @@ button[aria-busy="true"] {
   .btn.btn-primary { animation-duration: 8s; }
 }
 
-/* ---------- fin de animaciones ---------- */
+/* ------------------ RESPONSIVE (media queries) ------------------ */
 
-/* ------------------------------------------------------------------
-   Resto del CSS original (si hay reglas adicionales) se mantienen
-   ------------------------------------------------------------------ */
-
-/* Ajustar contexto de apilamiento para que el glow quede detrás de la tarjeta */
-.page-container { position: relative; z-index: 2; }
-
-/* Glow translúcido verde/azul sutil en el fondo (tiene poco contraste para no robar foco) */
-.page-bg-glow {
-  pointer-events: none;
-  position: fixed;
-  top: -12vh;
-  left: 50%;
-  transform: translateX(-50%) rotate(-8deg);
-  width: 80vw;
-  height: 62vh;
-  z-index: 1; /* por debajo de .page-container (z-index:2) */
-  background:
-    radial-gradient(40% 60% at 20% 40%, rgba(0,212,168,0.12), transparent 25%),
-    radial-gradient(30% 40% at 75% 55%, rgba(108,99,255,0.06), transparent 30%),
-    linear-gradient(90deg, rgba(0,212,168,0.03), rgba(108,99,255,0.02));
-  filter: blur(44px) saturate(120%);
-  mix-blend-mode: screen;
-  opacity: 0.95;
-  transition: opacity 300ms ease;
+/* Grandes pantallas (reducción leve para layouts anchos) */
+@media (max-width: 1200px) {
+  .main-content { margin-left: 420px; width: calc(100% - 420px); padding: 36px 20px; }
+  .contact-card, .new-contact-card { max-width: 560px; padding: 36px; }
+  .contact-title{ font-size:1.9rem; }
+  .contact-encourage{ max-width:480px; font-size:0.98rem; }
 }
 
-/* Reducir intensidad en pantallas pequeñas */
+/* Tablet / desktop pequeño */
 @media (max-width: 992px) {
-  .page-bg-glow { width: 120vw; height: 40vh; top: -18vh; filter: blur(36px) saturate(110%); opacity: 0.75; }
+  .sidebar { width: 300px; margin-left: 0; left: 0; } /* mantén fijo pero menos ancho */
+  .main-content { margin-left: 300px; width: calc(100% - 300px); padding: 30px 18px; }
+  .contact-card, .new-contact-card { max-width:520px; padding:34px 28px; border-radius:22px; }
+  .contact-title{ font-size:1.8rem; }
+  .form-floating { margin-bottom:12px; }
+  .page-bg-glow { top: -14vh; height:50vh; opacity:0.85; }
 }
 
-/* Opción para desactivar rápidamente desde DevTools */
-.page-bg-glow--off { opacity: 0 !important; pointer-events: none; }
+/* Tablets y móviles grandes: colapsa sidebar a overlay (sidebar.js debe añadir .active) */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform .32s cubic-bezier(.23,.9,.32,1);
+    width: 280px;
+    left: 0;
+    z-index: 1200;
+  }
+  .sidebar.active { transform: translateX(0); box-shadow: 8px 0 40px rgba(0,0,0,0.55); }
+  .sidebar-overlay { position: fixed; inset: 0; background: rgba(6,6,10,0.45); z-index: 1100; opacity: 0; pointer-events: none; transition: opacity .28s ease; }
+  .sidebar-overlay.active { opacity: 1; pointer-events: auto; }
+  .sidebar-toggle { display: inline-flex; z-index:1300; } /* muestra el botón hamburguesa */
+  .main-content { margin-left: 0; width: 100%; padding: 22px 14px; }
+  .contact-card, .new-contact-card { max-width:760px; width:100%; margin: 22px auto; padding:26px 18px; border-radius:18px; }
+  .contact-title{ font-size:1.7rem; }
+  .contact-encourage{ font-size:0.97rem; padding:0 6px; }
+  .page-bg-glow { display:block; filter: blur(32px); opacity:0.7; }
+}
+
+/* Móviles: layout vertical, inputs y botones a ancho completo */
+@media (max-width: 560px) {
+  .contact-card, .new-contact-card { padding:20px 14px; margin: 16px; box-shadow: 0 18px 46px rgba(6,6,12,0.6); }
+  .contact-title{ font-size:1.45rem; text-align:center; }
+  form { gap:12px; }
+  .form-floating > .form-control { height:48px; padding: .72rem .9rem; font-size:0.95rem; }
+  textarea.form-control { min-height:110px; }
+  .form-actions { flex-direction: column; gap:10px; align-items:stretch; }
+  .btn.btn-primary, .btn.btn-outline-secondary { width:100%; justify-content:center; padding:12px 14px; font-size:0.96rem; }
+  .contact-info { font-size:0.9rem; padding:0 6px; text-align:center; }
+  .page-bg-glow { width:140vw; height:34vh; top:-20vh; opacity:0.6; filter: blur(30px); }
+}
+
+/* Muy pequeño (pantallas estrechas) */
+@media (max-width: 420px) {
+  .profile-info h2 { font-size:0.98rem; }
+  .contact-title i { font-size:1rem; }
+  .contact-title{ font-size:1.28rem; }
+  .form-floating > label { font-size:0.9rem; }
+  .form-control::placeholder { font-size:0.88rem; }
+  .form-floating > .form-control { padding: .6rem .8rem; }
+  textarea.form-control { min-height:96px; }
+  .new-contact-card { padding:16px 12px; border-radius:14px; }
+  .page-bg-glow { display:block; opacity:0.55; filter: blur(26px); }
+}
+
+/* Preferencias de movimiento reducido: quitar transiciones/animaciones en móviles también */
+@media (prefers-reduced-motion: reduce) {
+  .contact-card, .new-contact-card, .page-bg-glow, .btn, .form-floating { transition: none !important; animation: none !important; }
+}
+
+/* Ajuste adicional para evitar que el label no suba en textarea en móviles:
+   asegura placeholder para que :placeholder-shown funcione bien en navegadores móviles */
+.form-floating > textarea.form-control[placeholder=""] { /* si placeholder vacío añadido por JS */ padding-top: .9rem; }
+
+/* --- Corrección etiquetas flotantes: posición absoluta y espacio para que no tapen el texto --- */
+.form-floating { position: relative; }
+
+/* Dejar más espacio arriba para la etiqueta cuando está dentro del input */
+.form-floating > .form-control {
+  padding: 18px 12px 12px; /* top padding mayor para no tapar texto */
+  position: relative;
+  z-index: 1;
+}
+
+/* Etiqueta en posición sobre el input inicialmente */
+.form-floating > label {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  font-size: 0.98rem;
+  color: rgba(220,220,235,0.65);
+  pointer-events: none;
+  background: transparent;
+  padding: 0 6px;
+  transform-origin: left top;
+  transition: transform 180ms cubic-bezier(.22,.9,.32,1), color 140ms, font-size 140ms;
+  z-index: 2;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Estado "flotado": cuando hay foco o valor */
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control.filled ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+  transform: translateY(-150%) scale(0.86);
+  color: var(--accent-1);
+  font-size: 0.84rem;
+  z-index: 3;
+}
+
+/* Ajuste para textarea (necesita un poco más de separación) */
+.form-floating > textarea.form-control { padding-top: 22px; }
+.form-floating > textarea.form-control:focus ~ label,
+.form-floating > textarea.form-control.filled ~ label,
+.form-floating > textarea.form-control:not(:placeholder-shown) ~ label {
+  transform: translateY(-160%) scale(0.86);
+}
+
+/* Asegurar que el texto que se escribe sea legible y no quede cubierto:
+   input tiene z-index y suficiente padding-top, label reduce tamaño al flotar. */
+.form-control { color: #e6e6ee; }
+
+/* Compatibilidad con placeholder-shown en navegadores que requieren placeholder */
+.form-floating > .form-control[placeholder=""] { /* placeholder vacío gestionado por JS */ }
+
+/* ----------------------------------
+   Nuevo: placeholders que se borran al focus
+   ---------------------------------- */
+
+/* utilidad para ocultar labels visualmente (accesible) */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* inputs y textarea con placeholder: estilo limpio, sin fondo blanco */
+.field .form-control {
+  width: 100%;
+  padding: 16px 14px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+  border: 1px solid rgba(255,255,255,0.04);
+  color: var(--muted);
+  font-size: 1rem;
+  transition: box-shadow 180ms ease, border-color 160ms ease, transform 160ms ease;
+  min-height: 56px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* textarea mayor altura */
+.field .form-control[type="textarea"],
+.field textarea.form-control {
+  min-height: 140px;
+  padding-top: 14px;
+  resize: vertical;
+}
+
+/* placeholder más tenue */
+.field .form-control::placeholder {
+  color: rgba(200,200,210,0.30);
+  opacity: 1;
+}
+
+/* al hacer foco: NO aparecer barra blanca, solo nuestro glow */
+.field .form-control:focus {
+  outline: none;
+  border-color: var(--accent-1);
+  box-shadow:
+    0 10px 34px rgba(108,99,255,0.10),
+    0 0 20px rgba(0,212,168,0.035);
+  background: rgba(255,255,255,0.01);
+  color: #fff;
+}
+
+/* quitar botones nativos webkit/IE que muestran decors */
+.field .form-control::-webkit-clear-button,
+.field .form-control::-webkit-search-cancel-button,
+.field .form-control::-webkit-contacts-auto-fill-button,
+.field .form-control::-webkit-credentials-auto-fill-button,
+textarea::-webkit-clear-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+
+/* Neutralizar autofill background (Chrome) */
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px rgba(255,255,255,0.01) inset !important;
+  box-shadow: 0 0 0px 1000px rgba(255,255,255,0.01) inset !important;
+  -webkit-text-fill-color: inherit !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+/* Si quieres ocultar el placeholder cuando el usuario escribe (opcional, mejor legibilidad) */
+.field .form-control:not(:placeholder-shown) { /* deja como está */ }
+
+/* pequeño helper para inputs con texto (no necesario si usas data attribute en JS) */
+.field .form-control.has-text { }
+
+/* Responsive: reducir padding en móviles */
+@media (max-width: 560px) {
+  .field .form-control { padding: 12px 10px; font-size: 0.96rem; min-height:48px; }
+  textarea.form-control { min-height: 110px; }
+}

@@ -1,48 +1,102 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('contactForm');
   const mailtoBtn = document.getElementById('mailtoBtn');
+  const statusEl = document.getElementById('formStatus');
+  const submitBtn = document.getElementById('submitBtn');
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('¡Gracias por tu mensaje! (No se envía realmente, es solo frontend)');
-    form.reset();
+  // Placeholder UX: limpiar placeholder al focus y restaurar si vacío en blur
+  const controls = document.querySelectorAll('.field .form-control');
+  controls.forEach(input => {
+    // guardar placeholder original
+    input.dataset.ph = input.getAttribute('placeholder') || '';
+
+    input.addEventListener('focus', () => {
+      // quitar placeholder para que no tape el texto en algunos navegadores
+      input.setAttribute('placeholder', '');
+    });
+
+    input.addEventListener('blur', () => {
+      // si el campo está vacío restablecer placeholder
+      if (!input.value || input.value.trim() === '') {
+        input.setAttribute('placeholder', input.dataset.ph);
+      }
+    });
+
+    // si el usuario pega o hay autofill, ocultar placeholder cuando hay contenido
+    input.addEventListener('input', () => {
+      if (input.value && input.value.trim() !== '') {
+        // mantener placeholder vacío para no superponer
+        input.setAttribute('placeholder', '');
+      } else {
+        input.setAttribute('placeholder', input.dataset.ph);
+      }
+    });
+
+    // re-check por autofill al cargar
+    setTimeout(() => {
+      if (input.value && input.value.trim() !== '') input.setAttribute('placeholder', '');
+    }, 200);
   });
 
-  mailtoBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    const subject = encodeURIComponent('Contacto desde la página web');
-    const body = encodeURIComponent(`Nombre: ${name}\nCorreo: ${email}\nMensaje:\n${message}`);
-    window.location.href = `mailto:samanthabello@gmail.com?subject=${subject}&body=${body}`;
-  });
+  // Envío a Formspree (fetch)
+  if (form) {
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      const endpoint = form.dataset.formspree;
+      if (!endpoint) {
+        statusEl.className = 'form-status error';
+        statusEl.textContent = 'No se encontró endpoint de Formspree.';
+        return;
+      }
 
-  // --- START: compatibilidad etiquetas flotantes + autofill ---
-  const floatingControls = document.querySelectorAll('.form-floating .form-control');
+      submitBtn.setAttribute('aria-busy', 'true');
+      statusEl.className = 'form-status';
+      statusEl.textContent = 'Enviando…';
 
-  function updateFilled(el) {
-    if (!el) return;
-    // si no tiene placeholder, ponemos uno vacío para que :placeholder-shown funcione consistente
-    if (!el.hasAttribute('placeholder')) el.setAttribute('placeholder', ' ');
-    if (el.value && el.value.trim() !== '') {
-      el.classList.add('filled');
-    } else {
-      el.classList.remove('filled');
-    }
+      const formData = new FormData(form);
+      formData.append('_subject', `Contacto desde web — ${formData.get('name') || 'sin nombre'}`);
+
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: formData
+        });
+
+        if (res.ok) {
+          form.reset();
+          // restaurar placeholders visibles
+          controls.forEach(i => i.setAttribute('placeholder', i.dataset.ph));
+          statusEl.className = 'form-status success';
+          statusEl.textContent = '¡Mensaje enviado! Gracias — te responderé pronto.';
+        } else {
+          const data = await res.json().catch(()=>null);
+          throw new Error((data && data.error) ? data.error : 'Error al enviar');
+        }
+      } catch (err) {
+        console.error(err);
+        statusEl.className = 'form-status error';
+        statusEl.textContent = 'No se pudo enviar. Intenta otra vez o usa CORREO.';
+      } finally {
+        submitBtn.removeAttribute('aria-busy');
+      }
+    });
   }
 
-  floatingControls.forEach(el => {
-    // comprobar al cargar (incluye posibles autofills)
-    updateFilled(el);
-
-    // eventos que actualizan el estado
-    el.addEventListener('input', () => updateFilled(el));
-    el.addEventListener('change', () => updateFilled(el));
-    el.addEventListener('blur', () => updateFilled(el));
-
-    // re-check tras un pequeño delay para capturar autofill del navegador
-    setTimeout(() => updateFilled(el), 250);
-  });
-  // --- END ---
+  // Mailto fallback
+  if (mailtoBtn) {
+    mailtoBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('name') ? document.getElementById('name').value : '';
+      const email = document.getElementById('email') ? document.getElementById('email').value : '';
+      const message = document.getElementById('message') ? document.getElementById('message').value : '';
+      const subject = encodeURIComponent('Contacto desde la página web');
+      const body = encodeURIComponent(`Nombre: ${name}\nCorreo: ${email}\nMensaje:\n${message}`);
+      window.location.href = `mailto:samy.bello2809@gmail.com?subject=${subject}&body=${body}`;
+    });
+  }
 });
