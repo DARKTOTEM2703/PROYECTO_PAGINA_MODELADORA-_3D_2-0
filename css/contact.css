@@ -1,0 +1,745 @@
+@import url("page-transitions.css");
+@import url("page-animations.css");
+
+/* Reseteo básico */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: #1e1e2c; /* Cambiado de #000000 a #1e1e2c */
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Layout principal */
+.page-container {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+/* ------------------------------------------------------------------
+   Mantener estilos del sidebar tal como están (se conservan)
+   ------------------------------------------------------------------ */
+.sidebar {
+  margin-left: 100px; /* Ajustado para el nuevo ancho */
+  width: 369.9px; /* Aumentado de 280px a 320px */
+  background-color: rgba(93, 87, 163, 0.8);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 25px 20px 25px; /* Aumentado el padding lateral */
+  position: fixed;
+  height: 100vh;
+  z-index: 1001; /* Sidebar por encima del overlay */
+  background-size: cover;
+  background-position: center;
+  box-shadow: 3px 0 15px rgba(0, 0, 0, 0.22);
+  transition: transform 0.35s cubic-bezier(.4, 0, .2, 1), opacity 0.25s;
+  opacity: 1;
+  backdrop-filter: blur(6px); /* Efecto glassmorphism */
+}
+
+/* (Se conservan también profile-section, profile-img, navigation, social-media, etc.) */
+.profile-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-top: 20px;
+  gap: 15px;
+  position: relative;
+}
+
+.profile-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+}
+
+.profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Separador vertical más visible */
+.profile-section::after {
+  content: "";
+  position: absolute;
+  left: 85px; /* Ajustado para la imagen más grande */
+  top: 60%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 60px;
+  background-color: #b3aeba;
+  border-radius: 1px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.profile-info {
+  text-align: left;
+  flex: 1;
+  margin-left: 10px; /* Más espacio después del separador */
+}
+
+.profile-info h2 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #b3aeba;
+  line-height: 1.1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  font-family: "Montserrat", sans-serif;
+}
+
+.profile-info p {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  font-style: Montserrat;
+  margin-bottom: 0;
+  color: #e8e8e8;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.3px;
+  transform: skew(-15deg);
+  display: inline-block;
+}
+
+.navigation {
+  margin-top: 60px;
+  flex-grow: 1;
+  margin-bottom: 30px;
+}
+
+.navigation ul {
+  list-style: none;
+  padding: 0;
+}
+
+.navigation ul li {
+  margin-bottom: 20px;
+}
+
+.navigation ul li a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  display: block;
+  padding: 15px 20px;
+  transition: all 0.3s ease;
+  font-weight: 300; /* Cambiado de 400 a 300 para texto más ligero */
+  letter-spacing: 1px; /* Aumentado de 0.5px a 1px */
+  font-size: 1rem; /* Aumentado de 0.95rem a 1rem */
+  border-radius: 8px;
+  text-transform: uppercase;
+  font-family: "Montserrat", "Helvetica", sans-serif; /* Fuente más limpia */
+}
+
+.navigation ul li a:hover,
+.navigation ul li a.active {
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #b5b0bb;
+}
+
+.social-media {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: auto;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.social-media a {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+  padding: 8px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none; /* Elimina la línea de subrayado */
+}
+
+.social-media a:hover {
+  transform: translateY(-3px);
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  text-decoration: none; /* Asegura que no aparezca línea en hover */
+}
+
+.social-media a:focus,
+.social-media a:active,
+.social-media a:visited {
+  text-decoration: none; /* Elimina líneas en todos los estados */
+}
+
+.sidebar-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------------------
+   NUEVOS ESTILOS PARA CONTACTO (profesional, centrado y animado)
+   Mantienen coherencia con paleta del sidebar y comportamiento responsive
+   ------------------------------------------------------------------ */
+
+:root{
+  --bg:#1e1e2c;
+  --card-bg: rgba(28,28,40,0.72);
+  --card-border: rgba(108,99,255,0.14);
+  --accent-1: #6c63ff;
+  --accent-2: #b3aeba;
+  --muted: #cfc7cf;
+  --glass-blur: 14px;
+  --radius-lg: 28px;
+  --radius-md: 12px;
+  --transition-fast: 180ms;
+}
+
+/* Contenido principal: desplazamiento respetando sidebar */
+.main-content{
+  flex: 1;
+  margin-left: 469.9px; /* conserva separación para el sidebar */
+  width: calc(100% - 469.9px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 24px;
+}
+
+/* Contact section centrada */
+.contact-section{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:80vh;
+  padding:20px;
+  z-index:1;
+}
+
+/* Card: apariencia profesional, glow sutil y animación de entrada */
+.contact-card,
+.new-contact-card,
+.glass-card{
+  width:100%;
+  max-width:600px;
+  border-radius:var(--radius-lg);
+  background: linear-gradient(180deg, rgba(28,28,40,0.84) 0%, rgba(28,28,40,0.66) 100%);
+  border:1px solid var(--card-border);
+  padding:44px 40px;
+  box-shadow:
+    0 20px 60px rgba(10,10,18,0.6),
+    0 8px 36px rgba(108,99,255,0.08);
+  position:relative;
+  backdrop-filter: blur(var(--glass-blur));
+  transition: transform 350ms cubic-bezier(.22,.9,.32,1), box-shadow 280ms ease;
+  overflow:visible;
+}
+
+/* Hover: ligera elevación y mayor glow */
+.contact-card:hover,
+.new-contact-card:hover,
+.glass-card:hover{
+  transform: translateY(-10px) scale(1.01);
+  box-shadow:
+    0 46px 120px rgba(10,10,18,0.7),
+    0 24px 90px rgba(108,99,255,0.14);
+}
+
+/* Glow sutil detrás de la tarjeta */
+.contact-card::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:-40px;
+  width:140%;
+  height:160px;
+  background: radial-gradient(closest-side, rgba(108,99,255,0.12), transparent 50%);
+  filter:blur(42px);
+  z-index:0;
+  pointer-events:none;
+}
+
+/* Título centrado con icon animado */
+.contact-title{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:center;
+  font-size:2rem;
+  font-weight:900;
+  color:var(--muted);
+  margin-bottom:18px;
+  letter-spacing:1.6px;
+  z-index:2;
+}
+.contact-title i{
+  color:var(--accent-1);
+  font-size:1.6rem;
+  animation:floatSlow 5s ease-in-out infinite;
+}
+
+/* Formulario: inputs refinados (compatible con .form-floating) */
+form{position:relative;z-index:2;display:flex;flex-direction:column;gap:14px}
+
+/* Estilo para .form-floating .form-control */
+.form-floating > .form-control{
+  width:100%;
+  padding:15px 16px;
+  border-radius:var(--radius-md);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.04);
+  color:var(--muted);
+  font-size:1rem;
+  transition: box-shadow var(--transition-fast), border-color var(--transition-fast), transform 220ms ease;
+  backdrop-filter: blur(4px);
+  min-height:56px;
+}
+.form-floating > label{
+  color:var(--accent-2);
+  font-weight:600;
+  left:12px;
+  top:8px;
+  padding-left:2px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  font-size:0.98rem;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+/* Focus / filled state */
+.form-floating > .form-control:focus{
+  outline:none;
+  border-color:var(--accent-1);
+  box-shadow:0 8px 30px rgba(108,99,255,0.12);
+  transform:translateY(-2px);
+  color:#ffffff;
+}
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label{
+  color:var(--accent-1);
+  transform: translateY(-10px) scale(0.96);
+}
+
+/* Textarea ajustes */
+textarea.form-control{min-height:140px;resize:vertical;padding-top:12px}
+
+/* Botones: primary con gradiente y micro-interacciones */
+.btn-primary{
+  background: linear-gradient(90deg, var(--accent-1) 30%, var(--accent-2) 100%);
+  color:#fff;
+  border:none;
+  padding:12px 28px;
+  border-radius:14px;
+  font-weight:800;
+  letter-spacing:0.6px;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  box-shadow: 0 12px 36px rgba(108,99,255,0.12);
+}
+.btn-primary:hover{
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 28px 96px rgba(108,99,255,0.18);
+}
+.btn-outline-secondary{
+  background:transparent;
+  color:var(--accent-2);
+  border:2px solid rgba(179,174,186,0.14);
+  padding:10px 22px;
+  border-radius:12px;
+  transition: all var(--transition-fast) ease;
+}
+.btn-outline-secondary:hover{
+  background: linear-gradient(90deg, rgba(179,174,186,0.12), rgba(108,99,255,0.04));
+  color:#fff;
+  transform: translateY(-3px);
+}
+
+/* Centrado de acciones */
+.form-actions{display:flex;gap:14px;justify-content:center;margin-top:6px}
+
+/* Info pequeña */
+.contact-info{
+  font-size:0.96rem;
+  color:var(--accent-2);
+  margin-top:18px;
+  opacity:0.95;
+  text-align:center;
+  letter-spacing:1px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  justify-content:center;
+}
+.contact-info i{ color:var(--accent-1); }
+
+/* Estilos adaptados: tarjeta de contacto, campos y botones (armonía con paleta morado / verde) */
+.new-contact-card {
+  max-width: 640px;
+  margin: 40px auto;
+  padding: 36px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(12,12,18,0.62), rgba(20,18,30,0.66));
+  border: 1px solid rgba(108,99,255,0.12);
+  box-shadow:
+    0 30px 60px rgba(6,6,12,0.65),
+    0 8px 30px rgba(108,99,255,0.04) inset;
+  position: relative;
+  backdrop-filter: blur(6px);
+  color: #e6e6ee;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* Sutileza de halo exterior */
+.new-contact-card::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 22px;
+  background: linear-gradient(90deg, rgba(108,99,255,0.12), rgba(0,230,170,0.07));
+  filter: blur(14px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.contact-title {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #e8e8ff;
+  margin-bottom: 18px;
+  text-shadow: 0 4px 18px rgba(108,99,255,0.08);
+}
+.contact-title i {
+  color: #6c63ff;
+  background: rgba(108,99,255,0.08);
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  box-shadow: 0 6px 24px rgba(108,99,255,0.04);
+}
+
+/* Inputs transparentes con borde luminoso al foco */
+.form-floating .form-control {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(108,99,255,0.12);
+  color: #e6e6ee;
+  height: 52px;
+  padding: .9rem 1rem;
+  border-radius: 10px;
+  transition: all .18s ease;
+  box-shadow: none;
+}
+
+.form-floating textarea.form-control {
+  min-height: 120px;
+  padding-top: 1.1rem;
+  padding-bottom: 1rem;
+}
+
+.form-floating label {
+  color: rgba(220,220,235,0.55);
+  padding-left: 4px;
+}
+
+/* Focus: resaltar con tono morado y ligero halo verde */
+.form-control:focus {
+  border-color: rgba(108,99,255,0.95);
+  box-shadow:
+    0 6px 26px rgba(12,12,20,0.6),
+    0 0 28px rgba(108,99,255,0.06),
+    0 0 8px rgba(0,230,170,0.03);
+  background: rgba(255,255,255,0.02);
+  color: #fff;
+  outline: none;
+}
+
+/* Placeholder y texto dentro */
+.form-control::placeholder {
+  color: rgba(200,200,210,0.28);
+}
+
+/* Botones: gradiente morado->verde, sombra suave */
+.btn.btn-primary {
+  background: linear-gradient(90deg, #6c63ff 0%, #00d4a8 100%);
+  border: none;
+  color: #061016;
+  font-weight: 700;
+  padding: .8rem 1.6rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(108,99,255,0.12), 0 3px 12px rgba(0,212,168,0.06);
+  transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Botón secundario estilo outline acorde al tema */
+.btn.btn-outline-secondary {
+  background: transparent;
+  color: rgba(230,230,240,0.9);
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: none;
+  padding: .72rem 1.2rem;
+  border-radius: 10px;
+}
+
+/* Hover states */
+.btn.btn-primary:hover { transform: translateY(-2px); opacity: .98; }
+.btn.btn-outline-secondary:hover {
+  background: rgba(255,255,255,0.02);
+  border-color: rgba(108,99,255,0.18);
+  transform: translateY(-1px);
+}
+
+/* Contenedor de botones centrado y con separación */
+.d-flex.gap-3.justify-content-center {
+  margin-top: 18px;
+}
+
+/* Info de contacto debajo */
+.contact-info {
+  margin-top: 18px;
+  color: rgba(220,220,230,0.7);
+  font-size: 0.95rem;
+}
+
+/* Pequeños iconos y enlaces */
+.contact-info b { color: #e8e8ff; }
+.social-link { color: rgba(200,200,215,0.7); text-decoration: none; }
+.social-link:hover { color: #6c63ff; }
+
+/* Nuevo: mensaje alentador y estados del formulario */
+.contact-encourage{
+  color: rgba(230,230,240,0.88);
+  text-align:center;
+  max-width:520px;
+  margin: 0 auto 16px;
+  font-size:1rem;
+  line-height:1.5;
+  color: rgba(207,199,207,0.95);
+  opacity:0.95;
+}
+
+.form-status{
+  max-width:520px;
+  margin: 10px auto 16px;
+  text-align:center;
+  font-weight:600;
+  color:var(--muted);
+  min-height:24px;
+}
+
+/* Success / error states */
+.form-status.success { color: #00d4a8; background: rgba(0,212,168,0.06); padding:8px 12px; border-radius:10px; border:1px solid rgba(0,212,168,0.09); }
+.form-status.error   { color: #ff6b6b; background: rgba(255,107,107,0.04); padding:8px 12px; border-radius:10px; border:1px solid rgba(255,107,107,0.06); }
+
+/* Disabled state for button during submit */
+button[aria-busy="true"]{
+  cursor: progress;
+  opacity: 0.85;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ---------- ANIMACIONES ---------- */
+
+/* Entrada suave (ya existe similar) */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(18px) scale(0.995); }
+  60% { opacity: 1; transform: translateY(-6px) scale(1.003); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Movimiento lento para elementos flotantes */
+@keyframes floatSlow {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Movimiento horizontal y vertical del glow de fondo */
+@keyframes moveGlow {
+  0% { transform: translateX(-50%) rotate(-8deg) translateY(0); opacity: 0.9; }
+  50% { transform: translateX(-48%) rotate(-6deg) translateY(-8px); opacity: 1; }
+  100% { transform: translateX(-52%) rotate(-10deg) translateY(0); opacity: 0.95; }
+}
+
+/* Gradiente animado para el botón */
+@keyframes btnShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Pequeña oleada cuando el formulario muestra resultado */
+@keyframes statusPop {
+  0% { opacity: 0; transform: translateY(10px) scale(0.995); }
+  60% { opacity: 1; transform: translateY(-4px) scale(1.01); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---------- Asignaciones ---------- */
+
+/* tarjeta: entrada y micro-flotación */
+.contact-card,
+.new-contact-card,
+.glass-card {
+  animation: fadeInUp 700ms cubic-bezier(.2,.9,.3,1) both;
+  will-change: transform, box-shadow;
+}
+
+/* título con flotación sutil */
+.contact-title i { animation: floatSlow 6s ease-in-out infinite; }
+
+/* glow de fondo en movimiento */
+.page-bg-glow {
+  animation: moveGlow 14s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* botón principal: gradiente animado y micro-pulse al hover */
+.btn.btn-primary {
+  background-size: 200% 200%;
+  animation: btnShift 6s linear infinite;
+}
+.btn.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 36px 96px rgba(108,99,255,0.14), 0 6px 24px rgba(0,212,168,0.06);
+}
+
+/* pequeño pulso al enviar */
+button[aria-busy="true"] {
+  animation: none;
+  opacity: 0.9;
+}
+
+/* estado del formulario: aparecer con pop */
+.form-status {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: statusPop 420ms ease forwards;
+  will-change: transform, opacity;
+}
+
+/* Cuando cambia a success o error, añadir ligera vibración de color */
+.form-status.success { box-shadow: 0 8px 30px rgba(0,212,168,0.06); }
+.form-status.error   { box-shadow: 0 8px 30px rgba(255,107,107,0.05); }
+
+/* Input focus — pulso de foco más suave */
+.form-control:focus {
+  transition: box-shadow 260ms cubic-bezier(.2,.9,.32,1), border-color 160ms;
+}
+
+/* etiqueta flotante: transición más fluida */
+.form-floating > label {
+  transition: transform 200ms cubic-bezier(.22,.9,.32,1), color 180ms;
+}
+
+/* micro-entradas para cada .form-floating al cargar (stagger) */
+.form-floating {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 600ms cubic-bezier(.2,.9,.3,1) both;
+}
+.form-floating:nth-of-type(1){ animation-delay: 80ms; }
+.form-floating:nth-of-type(2){ animation-delay: 160ms; }
+.form-floating:nth-of-type(3){ animation-delay: 240ms; }
+
+/* texto alentador: aparecer con retraso y ligera oscilación */
+.contact-encourage{
+  transform-origin:center;
+  animation: fadeInUp 760ms cubic-bezier(.2,.9,.3,1) both;
+}
+.contact-encourage{ animation-delay: 120ms; }
+
+/* Reduce-motion: desactivar animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+  .contact-card,
+  .new-contact-card,
+  .glass-card,
+  .contact-title i,
+  .page-bg-glow,
+  .btn.btn-primary,
+  .form-floating,
+  .form-status,
+  .contact-encourage {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Responsive adjustments: disminuir intensidad de animaciones en pantallas pequeñas */
+@media (max-width: 992px) {
+  .page-bg-glow { animation-duration: 18s; filter: blur(36px); opacity: 0.75; }
+  .contact-title i { animation-duration: 8s; }
+  .btn.btn-primary { animation-duration: 8s; }
+}
+
+/* ---------- fin de animaciones ---------- */
+
+/* ------------------------------------------------------------------
+   Resto del CSS original (si hay reglas adicionales) se mantienen
+   ------------------------------------------------------------------ */
+
+/* Ajustar contexto de apilamiento para que el glow quede detrás de la tarjeta */
+.page-container { position: relative; z-index: 2; }
+
+/* Glow translúcido verde/azul sutil en el fondo (tiene poco contraste para no robar foco) */
+.page-bg-glow {
+  pointer-events: none;
+  position: fixed;
+  top: -12vh;
+  left: 50%;
+  transform: translateX(-50%) rotate(-8deg);
+  width: 80vw;
+  height: 62vh;
+  z-index: 1; /* por debajo de .page-container (z-index:2) */
+  background:
+    radial-gradient(40% 60% at 20% 40%, rgba(0,212,168,0.12), transparent 25%),
+    radial-gradient(30% 40% at 75% 55%, rgba(108,99,255,0.06), transparent 30%),
+    linear-gradient(90deg, rgba(0,212,168,0.03), rgba(108,99,255,0.02));
+  filter: blur(44px) saturate(120%);
+  mix-blend-mode: screen;
+  opacity: 0.95;
+  transition: opacity 300ms ease;
+}
+
+/* Reducir intensidad en pantallas pequeñas */
+@media (max-width: 992px) {
+  .page-bg-glow { width: 120vw; height: 40vh; top: -18vh; filter: blur(36px) saturate(110%); opacity: 0.75; }
+}
+
+/* Opción para desactivar rápidamente desde DevTools */
+.page-bg-glow--off { opacity: 0 !important; pointer-events: none; }

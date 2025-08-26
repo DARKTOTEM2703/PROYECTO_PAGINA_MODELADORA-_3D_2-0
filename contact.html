@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience - Samantha Bello Bacelis</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- CSS personalizado -->
+    <link href="css/contact.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="page-container">
+        <!-- Botón para abrir el menú lateral -->
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Abrir menú">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        <!-- Sidebar -->
+        <div class="sidebar-overlay"></div>
+        <div class="sidebar">
+            <div class="profile-section">
+                <div class="profile-img">
+                    <img src="img/profile/profile.png" alt="Foto de perfil" class="img-fluid">
+                </div>
+                <div class="profile-info">
+                    <h2>SAMANTHA BELLO BACELIS</h2>
+                    <p>3D ARTIST</p>
+                </div>
+            </div>
+
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="portfolio.html">PORTFOLIO</a></li>
+                    <li><a href="experience.html">EXPERIENCE</a></li>
+                    <li><a href="about.html" >ABOUT ME</a></li>
+                    <li><a href="contact.html" class="active">CONTACT</a></li>
+                </ul>
+            </nav>
+
+            <div class="social-media">
+                <a href="https://wa.me/1234567890" rel="noopener" target="_blank" title="WhatsApp"><i
+                        class="fab fa-whatsapp"></i></a>
+                <a href="https://www.linkedin.com/in/samanthabello" target="_blank" rel="noopener"
+                    title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.artstation.com/samanthabello" target="_blank" rel="noopener"
+                    title="ArtStation"><i class="fab fa-artstation"></i></a>
+                <a href="https://x.com/kurohax3_art" target="_blank" rel="noopener" title="Twitter"><i
+                        class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/kurohax3_art?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                    target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <!-- Contenido principal -->
+        <main class="main-content">
+            <section class="contact-section">
+                <div class="contact-card glass-card new-contact-card">
+                    <h2 class="contact-title">
+                        <i class="fas fa-envelope-open-text"></i> Contáctame
+                    </h2>
+
+                    <!-- Mensaje alentador -->
+                    <p class="contact-encourage">
+                      ¿Tienes una idea, proyecto o consulta? Me encantaría saberlo. 
+                      Escríbeme con los detalles (aunque sean solo unas líneas) y te responderé lo antes posible.
+                    </p>
+
+                    <!-- Estado / resultados -->
+                    <div id="formStatus" class="form-status" aria-live="polite"></div>
+
+                    <!-- Formulario: pon aquí tu endpoint de Formspree -->
+                    <form id="contactForm" autocomplete="off" data-formspree="https://formspree.io/f/YOUR_FORMSPREE_ID" novalidate>
+                        <div class="form-floating mb-4">
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Tu nombre" required>
+                            <label for="name"><i class="fas fa-user"></i> Nombre</label>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Tu correo electrónico" required>
+                            <label for="email"><i class="fas fa-at"></i> Correo electrónico</label>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <textarea id="message" name="message" class="form-control" placeholder="Escribe tu mensaje..." required></textarea>
+                            <label for="message"><i class="fas fa-comment-dots"></i> Mensaje</label>
+                        </div>
+                        <div class="d-flex gap-3 justify-content-center mt-4 form-actions">
+                            <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
+                                <i class="fas fa-paper-plane"></i> Enviar
+                            </button>
+                            <a id="mailtoBtn" class="btn btn-outline-secondary btn-lg" href="#">
+                                <i class="fas fa-envelope"></i> CORREO
+                            </a>
+                        </div>
+                    </form>
+
+                    <div class="contact-info mt-4 text-center">
+                        <span><i class="fas fa-info-circle"></i> También puedes escribirme a
+                            <b>samanthabello@gmail.com</b></span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/portfolio.js"></script>
+    <script src="js/page-transitions.js"></script>
+    <script src="js/contact.js"></script>
+    <script>
+    // filepath: c:\Users\jafet\Downloads\xd\PROYECTO_PAGINA_MODELADORA _3D_2-0\contact.html
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('¡Gracias por tu mensaje! (No se envía realmente, es solo frontend)');
+    });
+
+    document.getElementById('mailtoBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      const subject = encodeURIComponent('Contacto desde la página web');
+      const body = encodeURIComponent(`Nombre: ${name}\nCorreo: ${email}\nMensaje:\n${message}`);
+      window.location.href = `mailto:samanthabello@gmail.com?subject=${subject}&body=${body}`;
+    });
+    </script>
+</body>
+
+</html>
