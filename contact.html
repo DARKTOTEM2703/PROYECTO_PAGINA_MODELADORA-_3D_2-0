@@ -27,6 +27,11 @@
         <!-- Sidebar -->
         <div class="sidebar-overlay"></div>
         <div class="sidebar">
+            <div class="language-switcher">
+                <button id="langBtn" class="btn btn-outline-secondary btn-sm" title="Traducir">
+                    <i class="fas fa-globe"></i> ES
+                </button>
+            </div>
             <div class="profile-section">
                 <div class="profile-img">
                     <img src="img/profile/profile.png" alt="Foto de perfil" class="img-fluid">
@@ -42,7 +47,7 @@
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="portfolio.html">PORTFOLIO</a></li>
                     <li><a href="experience.html">EXPERIENCE</a></li>
-                    <li><a href="about.html" >ABOUT ME</a></li>
+                    <li><a href="about.html">ABOUT ME</a></li>
                     <li><a href="contact.html" class="active">CONTACT</a></li>
                 </ul>
             </nav>
@@ -50,15 +55,17 @@
             <div class="social-media">
                 <a href="https://wa.me/1234567890" rel="noopener" target="_blank" title="WhatsApp"><i
                         class="fab fa-whatsapp"></i></a>
-                <a href="https://www.linkedin.com/in/samanthabello" target="_blank" rel="noopener"
-                    title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.artstation.com/samanthabello" target="_blank" rel="noopener"
-                    title="ArtStation"><i class="fab fa-artstation"></i></a>
+                <a href="https://www.linkedin.com/in/samanthabello" target="_blank" rel="noopener" title="LinkedIn"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.artstation.com/samanthabello" target="_blank" rel="noopener" title="ArtStation"><i
+                        class="fab fa-artstation"></i></a>
                 <a href="https://x.com/kurohax3_art" target="_blank" rel="noopener" title="Twitter"><i
                         class="fab fa-twitter"></i></a>
                 <a href="https://www.instagram.com/kurohax3_art?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                     target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
+
+            <div id="google_translate_element" style="display:none"></div>
         </div>
         <!-- Contenido principal -->
         <main class="main-content">
@@ -69,14 +76,15 @@
                     </h2>
 
                     <p class="contact-encourage">
-                      ¿Tienes una idea, proyecto o consulta? Me encantaría saberlo. 
-                      Escríbeme con los detalles (aunque sean solo unas líneas) y te responderé lo antes posible.
+                        ¿Tienes una idea, proyecto o consulta? Me encantaría saberlo.
+                        Escríbeme con los detalles (aunque sean solo unas líneas) y te responderé lo antes posible.
                     </p>
 
                     <div id="formStatus" class="form-status" aria-live="polite"></div>
 
                     <!-- FORM: usa placeholders (se borran al foco) -->
-                    <form id="contactForm" autocomplete="off" data-formspree="https://formspree.io/f/YOUR_FORMSPREE_ID" novalidate>
+                    <form id="contactForm" autocomplete="off" data-formspree="https://formspree.io/f/YOUR_FORMSPREE_ID"
+                        novalidate>
                         <div class="field mb-3">
                             <label class="sr-only" for="name">Nombre</label>
                             <input type="text" id="name" name="name" class="form-control" placeholder="Nombre" required>
@@ -84,12 +92,14 @@
 
                         <div class="field mb-3">
                             <label class="sr-only" for="email">Correo electrónico</label>
-                            <input type="email" id="email" name="email" class="form-control" placeholder="Correo electrónico" required>
+                            <input type="email" id="email" name="email" class="form-control"
+                                placeholder="Correo electrónico" required>
                         </div>
 
                         <div class="field mb-3">
                             <label class="sr-only" for="message">Mensaje</label>
-                            <textarea id="message" name="message" class="form-control" placeholder="Escribe tu mensaje..." required></textarea>
+                            <textarea id="message" name="message" class="form-control"
+                                placeholder="Escribe tu mensaje..." required></textarea>
                         </div>
 
                         <div class="d-flex gap-3 justify-content-center mt-4 form-actions">
@@ -116,22 +126,8 @@
     <script src="js/portfolio.js"></script>
     <script src="js/page-transitions.js"></script>
     <script src="js/contact.js"></script>
-    <script>
-    // filepath: c:\Users\jafet\Downloads\xd\PROYECTO_PAGINA_MODELADORA _3D_2-0\contact.html
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('¡Gracias por tu mensaje! (No se envía realmente, es solo frontend)');
-    });
-
-    document.getElementById('mailtoBtn').addEventListener('click', function(e) {
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
-      const subject = encodeURIComponent('Contacto desde la página web');
-      const body = encodeURIComponent(`Nombre: ${name}\nCorreo: ${email}\nMensaje:\n${message}`);
-      window.location.href = `mailto:samy.bello2809@gmail.com?subject=${subject}&body=${body}`;
-    });
+    <script src="js/translater.js"></script>
+    <script src="js/mailto.js">
     </script>
 </body>
 

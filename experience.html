@@ -17,9 +17,16 @@
 </head>
 
 <body>
+   
     <!-- Sidebar -->
     <div class="sidebar-overlay"></div>
     <div class="sidebar">
+         <!-- Agrega esto en el sidebar de TODAS las páginas, después de .social-media -->
+    <div class="language-switcher">
+        <button id="langBtn" class="btn btn-outline-secondary btn-sm" title="Traducir">
+            <i class="fas fa-globe"></i> ES
+        </button>
+    </div>
         <div class="profile-section">
             <div class="profile-img">
                 <img src="img/profile/profile.png" alt="Foto de perfil" class="img-fluid">
@@ -40,14 +47,21 @@
             </ul>
         </nav>
 
-      
+
         <div class="social-media">
-            <a href="https://wa.me/1234567890" rel="noopener" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://www.linkedin.com/in/samanthabello" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.artstation.com/samanthabello" target="_blank" rel="noopener" title="ArtStation"><i class="fab fa-artstation"></i></a>
-            <a href="https://x.com/kurohax3_art" target="_blank" rel="noopener" title="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com/kurohax3_art?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/1234567890" rel="noopener" target="_blank" title="WhatsApp"><i
+                    class="fab fa-whatsapp"></i></a>
+            <a href="https://www.linkedin.com/in/samanthabello" target="_blank" rel="noopener" title="LinkedIn"><i
+                    class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.artstation.com/samanthabello" target="_blank" rel="noopener" title="ArtStation"><i
+                    class="fab fa-artstation"></i></a>
+            <a href="https://x.com/kurohax3_art" target="_blank" rel="noopener" title="Twitter"><i
+                    class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/kurohax3_art?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
+
+        <div id="google_translate_element" style="display:none"></div>
     </div>
 
     <!-- Botón para abrir el menú lateral -->
@@ -71,10 +85,14 @@
                         <h3>Junior 3D Modeling Freelancer</h3>
                         <div class="timeline-date">2022 - Present</div>
                         <ul>
-                            <li>Development and optimization of characters, environments, and props for video games and digital productions.</li>
-                            <li>Texturing in Substance Painter and Marmoset Toolbag, digital sculpting in ZBrush, and modeling in Maya and Blender.</li>
-                            <li>Asset integration in Unity and Unreal Engine, ensuring compatibility and real-time performance.</li>
-                            <li>Collaboration with multidisciplinary teams to create visually impactful environments.</li>
+                            <li>Development and optimization of characters, environments, and props for video games and
+                                digital productions.</li>
+                            <li>Texturing in Substance Painter and Marmoset Toolbag, digital sculpting in ZBrush, and
+                                modeling in Maya and Blender.</li>
+                            <li>Asset integration in Unity and Unreal Engine, ensuring compatibility and real-time
+                                performance.</li>
+                            <li>Collaboration with multidisciplinary teams to create visually impactful environments.
+                            </li>
                         </ul>
                     </div>
 
@@ -112,7 +130,8 @@
                         <h3>Advanced Degree in 3D Modeling, Animation, and Games</h3>
                         <div class="timeline-date">2020 - 2022</div>
                         <ul>
-                            <li>Advanced Degree in 3D Modeling, Animation, and Interactive Environments for Video Games.</li>
+                            <li>Advanced Degree in 3D Modeling, Animation, and Interactive Environments for Video Games.
+                            </li>
                             <li>Proficient in software such as Maya, ZBrush, Blender, and Substance Painter.</li>
                         </ul>
                     </div>
@@ -128,7 +147,7 @@
     <script src="js/sidebar.js"></script>
     <script src="js/portfolio.js"></script>
     <script src="js/page-transitions.js"></script>
-
+    <script src="js/translater.js"></script>
 </body>
 
 </html>

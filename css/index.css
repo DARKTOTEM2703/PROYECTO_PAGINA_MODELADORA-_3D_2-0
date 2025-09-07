@@ -556,3 +556,38 @@ body {
     width: 100%;
   }
 }
+
+/* Estilos para el selector de idioma */
+.language-switcher {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.language-switcher .btn {
+  background: rgba(108,99,255,0.08);
+  color: #b3aeba;
+  border-radius: 8px;
+  border: 1px solid rgba(108,99,255,0.18);
+  font-size: 1rem;
+  padding: 6px 18px;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+  box-shadow: 0 2px 12px rgba(108,99,255,0.06);
+}
+
+.language-switcher .btn:hover,
+.language-switcher .btn:focus {
+  background: rgba(108,99,255,0.18);
+  color: #fff;
+  border-color: #6c63ff;
+  box-shadow: 0 8px 32px rgba(108,99,255,0.12);
+}
+
+.language-switcher .btn i {
+  margin-right: 6px;
+  color: #6c63ff;
+}
