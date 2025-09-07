@@ -7,147 +7,250 @@
       "creationDate": "2024-03-15",
       "displayDate": "2024",
       "folder": "Personajes/HOLLOW",
-      "thumbnail": "img/personajes/HOLLOW/hollow.png",
+      "thumbnail": "img/Personajes/HOLLOW/hollow.png",
       "description": "Modelado 3D del personaje principal de Hollow Knight",
-      "detailedDescription": "Hollow Knight fan art represented in a 3D diorama, capturing the essence and characteristic details of the original game. The model was created from scratch in Blender, where the base mesh was developed and optimized through a retopology process. The most detailed parts of the character were sculpted in ZBrush to add greater definition and fidelity to the design.\n\nTexturing was carried out in Substance Painter, applying a PBR workflow to achieve realistic and well-defined materials. This project was developed during my studies at ENTI (Escola de Noves Tecnologies Interactives), as part of the higher degree in Character Design and Development. The objective of the assignment was to create a 3D model of a creature, applying modeling, sculpting, and texturing techniques for real-time engines.",
+      "detailedDescription": "Hollow Knight fan art represented in a 3D diorama. Base mesh in Blender, sculpted in ZBrush, textured in Substance Painter and final renders in Marmoset.",
       "softwares": [
         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg",
+        "img/icons/zbrush.png",
         "img/icons/marmoset.webp",
-        "img/icons/zbrush.png",       
-        "img/icons/Autodesk_Maya.svg",
-        "img/icons/unreal.webp",
-        "img/icons/unity.webp",   
-        "img/icons/photoshop.webp"],
-      "renders": [
-        { "image": "img/personajes/HOLLOW/front-view.png", "view": "Front View" },
-        { "image": "img/personajes/HOLLOW/back-view.png", "view": "Back View" },
-        { "image": "img/personajes/HOLLOW/side-view.png", "view": "Side View" },
-        { "image": "img/personajes/HOLLOW/top-view.png", "view": "Top View" }
+        "img/icons/photoshop.webp",
+        "img/icons/unity.webp",
+        "img/icons/unreal.webp"
       ],
-      "video": "img/personajes/HOLLOW/media/hollowvideo.mp4",
-      "videoPoster": "img/personajes/HOLLOW/front-view.png",
+      "renders": [
+        { "image": "img/Personajes/HOLLOW/front-view.png", "view": "Front View" },
+        { "image": "img/Personajes/HOLLOW/back-view.png", "view": "Back View" },
+        { "image": "img/Personajes/HOLLOW/side-view.png", "view": "Side View" },
+        { "image": "img/Personajes/HOLLOW/top-view.png", "view": "Top View" }
+      ],
+      "video": "img/Personajes/HOLLOW/media/hollowvideo.mp4",
+      "videoPoster": "img/Personajes/HOLLOW/front-view.png",
       "videoCaption": "Turntable",
-      "turntableDescription": "This project was created with the purpose of artistically representing my favorite character from my favorite video game, Hollow Knight. I am proud of the final result and the opportunity to develop it during my studies. "
+      "turntableDescription": "Turntable del personaje creado para mostrar la topología y texturas en tiempo real."
     },
     {
       "id": "pochita",
-      "title": "POCHITA", 
+      "title": "POCHITA",
       "category": ["characters"],
       "creationDate": "2024-02-10",
       "displayDate": "2024",
       "folder": "Personajes/POCHITA",
-      "thumbnail": "img/personajes/POCHITA/POCHITA-PRINCIPAL.png",
+      "thumbnail": "img/Personajes/POCHITA/POCHITA-PRINCIPAL.png",
       "description": "Modelado 3D de Pochita de Chainsaw Man",
-      "detailedDescription": "Modelado 3D completo del personaje Pochita de la serie Chainsaw Man. El proyecto incluye el modelado base, esculpido de detalles, texturizado y preparación para renderizado. Se prestó especial atención a las proporciones y características distintivas del personaje para mantener la fidelidad al diseño original.",
-      "softwares": [
-        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg",
-        "img/icons/zbrush.png",       
-        "img/icons/unreal.webp",
-        "img/icons/unity.webp",   
-        "img/icons/photoshop.webp"
-      ],
-      "renders": [
-        { "image": "img/personajes/POCHITA/left-view.png", "view": "Left View" },
-        { "image": "img/personajes/POCHITA/right-view.png", "view": "Right View" }
-      ],
-      "video": "img/personajes/HOLLOW/media/pochitavideo.mp4",
-      "videoPoster": "img/personajes/HOLLOW/POCHITA-PRINCIPAL.png",
-      "videoCaption": "Turntable",
-      "turntableDescription": "This project was created with the purpose of artistically representing my favorite character from my favorite video game, Hollow Knight. I am proud of the final result and the opportunity to develop it during my studies. "
-
-    },
-    {
-      "id": "tomie",
-      "title": "TOMIE",
-      "category": ["characters"],
-      "folder": "Personajes/Tomie",
-      "thumbnail": "img/personajes/tomie/tbrender004.png", 
-      "description": "Modelado 3D del personaje Tomie",
-      "detailedDescription": "Interpretación 3D del icónico personaje Tomie de Junji Ito. El proyecto se enfocó en capturar la esencia inquietante y la belleza perturbadora del personaje, trabajando especialmente en los detalles faciales y la expresión. Se utilizaron técnicas avanzadas de sculpting para lograr las características distintivas.",
+      "detailedDescription": "Modelado completo, esculpido de detalles y texturizado. Preparado para render y presentación.",
       "softwares": [
         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg",
         "img/icons/zbrush.png",
         "img/icons/photoshop.webp"
       ],
       "renders": [
-        { "image": "img/personajes/tomie/Screenshot_1.jpg", "view": "Front View" },
-        { "image": "img/personajes/tomie/Screenshot_2.jpg", "view": "Back View" },
-        { "image": "img/personajes/tomie/Screenshot_3.jpg", "view": "Side View" },
-        { "image": "img/personajes/tomie/Screenshot_15.jpg", "view": "Top View" }
+        { "image": "img/Personajes/POCHITA/left-view.png", "view": "Left View" },
+        { "image": "img/Personajes/POCHITA/right-view.png", "view": "Right View" }
+      ],
+      "video": "img/Personajes/HOLLOW/media/pochitavideo.mp4",
+      "videoPoster": "img/Personajes/POCHITA/POCHITA-PRINCIPAL.png",
+      "videoCaption": "Turntable"
+    },
+    {
+      "id": "tomie",
+      "title": "TOMIE",
+      "category": ["characters"],
+      "creationDate": "2023-11-01",
+      "folder": "Personajes/Tomie",
+      "thumbnail": "img/Personajes/Tomie/tbrender004.png",
+      "description": "Interpretación 3D del icónico personaje Tomie",
+      "detailedDescription": "Enfoque en detalles faciales y expresión mediante sculpting avanzado en ZBrush y retoques en Photoshop.",
+      "softwares": [
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg",
+        "img/icons/zbrush.png",
+        "img/icons/photoshop.webp"
+      ],
+      "renders": [
+        { "image": "img/Personajes/Tomie/Screenshot_1.jpg", "view": "Front View" },
+        { "image": "img/Personajes/Tomie/Screenshot_2.jpg", "view": "Back View" },
+        { "image": "img/Personajes/Tomie/Screenshot_3.jpg", "view": "Side View" },
+        { "image": "img/Personajes/Tomie/Screenshot_15.jpg", "view": "Top View" }
       ]
     },
     {
-      "id": "chicarosa",
+      "id": "alien-purple-girl",
+      "title": "ALIEN PURPLE GIRL",
+      "category": ["characters"],
+      "creationDate": "2023-08-20",
+      "folder": "Personajes/Alien Purple Girl",
+      "thumbnail": "img/Personajes/Alien Purple Girl/samantha-bello-fullbody.jpg",
+      "description": "Personaje 3D - full body render",
+      "detailedDescription": "Proyecto personal que incluye proceso de sculpt y presentación final. Contiene imágenes del proceso y vistas finales.",
+      "softwares": [
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg",
+        "img/icons/zbrush.png",
+        "img/icons/photoshop.webp"
+      ],
+      "renders": [
+        { "image": "img/Personajes/Alien Purple Girl/samantha-bello-fullbody.jpg", "view": "Full Body" },
+        { "image": "img/Personajes/Alien Purple Girl/Process/View_Zbrush.jpg", "view": "ZBrush View" },
+        { "image": "img/Personajes/Alien Purple Girl/Process/Views_Zbrush.jpg", "view": "ZBrush Views" },
+        { "image": "img/Personajes/Alien Purple Girl/Sides/Views.jpg", "view": "Side Views" }
+      ]
+    },
+    {
+      "id": "skulll-warrior",
+      "title": "SKULL WARRIOR",
+      "category": ["characters"],
+      "creationDate": "2023-06-05",
+      "folder": "Personajes/Skulll Warrior",
+      "thumbnail": "img/Personajes/Skulll Warrior/Principal.jpg",
+      "description": "Guerrero con casco esquelético, proyecto de personaje",
+      "detailedDescription": "Modelado y proceso de haircards en Maya y ZBrush, incluye renders y material del proceso.",
+      "softwares": [
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg",
+        "img/icons/Autodesk_Maya.svg",
+        "img/icons/zbrush.png",
+        "img/icons/photoshop.webp"
+      ],
+      "renders": [
+        { "image": "img/Personajes/Skulll Warrior/Principal.jpg", "view": "Hero Render" },
+        { "image": "img/Personajes/Skulll Warrior/Process/Hairdcards Maya.png", "view": "Haircards Maya" },
+        { "image": "img/Personajes/Skulll Warrior/Sides/FullBody.jpg", "view": "Full Body" }
+      ]
+    },
+    {
+      "id": "chica-rosa",
       "title": "CHICA ROSA",
       "category": ["characters"],
       "folder": "Personajes/CHICAROSA",
       "thumbnail": "img/Personajes/CHICAROSA/Foto-principal.jpg",
-      "description": "Modelado de personaje femenino"
+      "description": "Modelado de personaje femenino",
+      "softwares": [
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg",
+        "img/icons/zbrush.png"
+      ],
+      "renders": [
+        { "image": "img/Personajes/CHICAROSA/Foto-principal.jpg", "view": "Principal" }
+      ]
     },
     {
       "id": "seed-seeds",
       "title": "SEED SEEDS",
       "category": ["gamejams", "videogames"],
-      "folder": "Gamejams/SEED SEEDS",
+      "folder": "Gamejams/SEEDSEEDS",
       "thumbnail": "img/Gamejams/SEEDSEEDS/SEEDSEEDSPRINCIPAL.png",
-      "description": "Proyecto de game jam con temática de plantas"
+      "description": "Proyecto de game jam con temática de plantas",
+      "detailedDescription": "Game jam: prototipo visual con assets y ambientes basados en flora fantástica.",
+      "softwares": [
+        "img/icons/unreal.webp",
+        "img/icons/unity.webp",
+        "img/icons/photoshop.webp"
+      ],
+      "renders": [
+        { "image": "img/Gamejams/SEEDSEEDS/SEEDSEEDSPRINCIPAL.png", "view": "Cover" },
+        { "image": "img/Gamejams/SEEDSEEDS/SeedsSeeds1.png", "view": "Screenshot 1" },
+        { "image": "img/Gamejams/SEEDSEEDS/SeedsSeeds2.png", "view": "Screenshot 2" },
+        { "image": "img/Gamejams/SEEDSEEDS/SeedsSeeds3.png", "view": "Screenshot 3" }
+      ]
     },
     {
       "id": "dont-look",
       "title": "DON'T LOOK",
-      "category": ["gamejams", "videogames"],
+      "category": ["gamejams", "videogames", "horror"],
       "folder": "Gamejams/Dont Look",
-      "thumbnail": "img/portfolio/dont-look.jpg",
-      "description": "Game jam con mecánicas de horror"
+      "thumbnail": "img/Gamejams/Dont Look/Portada.png",
+      "description": "Game jam con mecánicas de horror",
+      "detailedDescription": "Prototipo de horror con criaturas y atmósfera oscura. Incluye tráiler y capturas del juego.",
+      "softwares": [
+        "img/icons/unreal.webp",
+        "img/icons/marmoset.webp"
+      ],
+      "renders": [
+        { "image": "img/Gamejams/Dont Look/Portada.png", "view": "Cover" },
+        { "image": "img/Gamejams/Dont Look/Screenshot (11).png", "view": "Screenshot A" },
+        { "image": "img/Gamejams/Dont Look/Screenshot (12).png", "view": "Screenshot B" },
+        { "image": "img/Gamejams/Dont Look/Screenshot_3.jpg", "view": "Screenshot C" }
+      ],
+      "video": "img/Gamejams/Dont Look/DontLookTrailer.mp4",
+      "videoPoster": "img/Gamejams/Dont Look/Portada.png"
     },
     {
-      "id": "kitsune",
+      "id": "el-viaje-de-kitsune",
       "title": "EL VIAJE DE KITSUNE",
-      "category": ["gamejams", "videogames"],
+      "category": ["gamejams", "videogames", "adventure"],
       "folder": "Gamejams/El viaje de kitsune",
-      "thumbnail": "img/portfolio/kitsune.jpg",
-      "description": "Aventura visual de un zorro mágico"
+      "thumbnail": "img/Gamejams/El viaje de kitsune/Viaje de Kitsune.png",
+      "description": "Aventura visual de un zorro mágico",
+      "renders": [
+        { "image": "img/Gamejams/El viaje de kitsune/Viaje de Kitsune.png", "view": "Cover" },
+        { "image": "img/Gamejams/El viaje de kitsune/Viaje de Kitsune1.png", "view": "Scene 1" },
+        { "image": "img/Gamejams/El viaje de kitsune/Viaje de Kitsune2.png", "view": "Scene 2" }
+      ],
+      "softwares": [
+        "img/icons/unreal.webp",
+        "img/icons/photoshop.webp"
+      ]
     },
     {
       "id": "let-us-out",
       "title": "LET US OUT",
       "category": ["gamejams", "videogames"],
       "folder": "Gamejams/Let us Out",
-      "thumbnail": "img/portfolio/let-us-out.jpg",
-      "description": "Juego de escape cooperativo"
+      "thumbnail": "img/Gamejams/Let us Out/Let Us out.jpg",
+      "description": "Juego de escape cooperativo",
+      "renders": [
+        { "image": "img/Gamejams/Let us Out/Let Us out.jpg", "view": "Cover" },
+        { "image": "img/Gamejams/Let us Out/Let Us out1.png", "view": "Screenshot 1" },
+        { "image": "img/Gamejams/Let us Out/Let Us out2.png", "view": "Screenshot 2" }
+      ],
+      "softwares": [
+        "img/icons/unreal.webp",
+        "img/icons/unity.webp"
+      ]
     },
     {
       "id": "escenario-chido",
       "title": "ESCENARIO CHIDO",
       "category": ["environments"],
       "folder": "Escenarios/ESCENARIOCHIDO",
-      "thumbnail": "img/portfolio/escenario-chido.jpg",
-      "description": "Diseño de entorno 3D detallado"
+      "thumbnail": "img/Escenarios/ESCENARIOCHIDO/Layer_31.png",
+      "description": "Diseño de entorno 3D detallado",
+      "renders": [
+        { "image": "img/Escenarios/ESCENARIOCHIDO/Layer_31.png", "view": "Cover" }
+      ]
     },
     {
-      "id": "plantas-vs-zombies",
+      "id": "casa-pvz",
       "title": "CASA PLANTAS VS ZOMBIES",
-      "category": ["environments", "videogames"],
+      "category": ["environments", "videogames", "academics"],
       "folder": "Academicos/Casa Plantas vs Zombies",
-      "thumbnail": "img/portfolio/pvz-house.jpg",
-      "description": "Recreación 3D de la casa de Plants vs Zombies"
+      "thumbnail": "img/Academicos/Casa Plantas vs Zombies/PlantsVsZombies.png",
+      "description": "Recreación 3D de la casa de Plants vs Zombies",
+      "renders": [
+        { "image": "img/Academicos/Casa Plantas vs Zombies/PlantsVsZombies.png", "view": "Scene" },
+        { "image": "img/Academicos/Casa Plantas vs Zombies/PlantsVsZombies001.png", "view": "Alternate" }
+      ],
+      "video": "img/Academicos/Casa Plantas vs Zombies/PlantsVsZombies.mp4"
     },
     {
       "id": "environment-ue",
       "title": "ENVIRONMENT UE",
       "category": ["environments"],
       "folder": "Academicos/Enviroment UE",
-      "thumbnail": "img/portfolio/environment-ue.jpg",
-      "description": "Entorno creado en Unreal Engine"
+      "thumbnail": "img/Academicos/Enviroment UE/Megadiorama.jpg",
+      "description": "Entorno creado en Unreal Engine",
+      "renders": [
+        { "image": "img/Academicos/Enviroment UE/Megadiorama.jpg", "view": "Megadiorama" }
+      ],
+      "video": "img/Academicos/Enviroment UE/Magical_Forest.mp4"
     },
     {
       "id": "espacio",
       "title": "ESPACIO",
       "category": ["environments"],
       "folder": "Academicos/Espacio",
-      "thumbnail": "img/portfolio/espacio.jpg",
-      "description": "Escena espacial con detalles astronómicos"
+      "thumbnail": "img/Academicos/Espacio/Ovni_SamanthaBello.png",
+      "description": "Escena espacial con detalles astronómicos",
+      "renders": [
+        { "image": "img/Academicos/Espacio/Ovni_SamanthaBello.png", "view": "Cover" }
+      ]
     }
-    
   ]
 }
