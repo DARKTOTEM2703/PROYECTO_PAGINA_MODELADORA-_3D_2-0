@@ -5,7 +5,7 @@
       "title": "HOLLOW KNIGHT",
       "category": ["characters", "videogames"],
       "creationDate": "2024-03-15",
-      "displayDate": "2024",
+      "displayDate": "2022",
       "folder": "Personajes/HOLLOW",
       "thumbnail": "img/personajes/HOLLOW/hollow.png",
       "description": "Modelado 3D del personaje principal de Hollow Knight",
@@ -34,7 +34,7 @@
       "title": "POCHITA", 
       "category": ["characters"],
       "creationDate": "2024-02-10",
-      "displayDate": "2024",
+      "displayDate": "2022",
       "folder": "Personajes/POCHITA",
       "thumbnail": "img/personajes/POCHITA/POCHITA-PRINCIPAL.png",
       "description": "Modelado 3D de Pochita de Chainsaw Man",
@@ -88,7 +88,7 @@
       "softwares": [
         "img/icons/zbrush.png",
         "img/icons/photoshop.webp",
-        "img/icons/blender.svg"
+        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg"
       ],
       "renders": [
         { "image": "img/Personajes/Alien Purple Girl/samantha-bello-fullbody.jpg", "view": "Full Body" },
